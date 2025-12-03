@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Header } from '@/components/dashboard/Header';
+import { Navbar } from '@/components/dashboard/Navbar';
 import { FilterBar } from '@/components/dashboard/FilterBar';
 import { RideRequestsTable } from '@/components/dashboard/RideRequestsTable';
 import { LogViewer } from '@/components/dashboard/LogViewer';
@@ -15,7 +15,6 @@ const Index = () => {
   const [selectedRideId, setSelectedRideId] = useState<string | null>(null);
   const [rides, setRides] = useState<RideRequest[]>([]);
 
-  // Simulate initial data loading
   useEffect(() => {
     const timer = setTimeout(() => {
       setRides(mockRideRequests);
@@ -23,12 +22,11 @@ const Index = () => {
       toast.success('Dashboard loaded', {
         description: `${mockRideRequests.length} ride requests found`,
       });
-    }, 1200);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Filter rides based on search and status
   const filteredRides = useMemo(() => {
     return rides.filter((ride) => {
       const matchesSearch =
@@ -42,7 +40,6 @@ const Index = () => {
     });
   }, [rides, searchQuery, statusFilter]);
 
-  // Get selected ride and its logs
   const selectedRide = rides.find((r) => r.id === selectedRideId) || null;
   const selectedLogs: LogEntry[] = selectedRideId ? getLogsForRide(selectedRideId) : [];
 
@@ -52,7 +49,7 @@ const Index = () => {
       setRides(mockRideRequests);
       setIsLoading(false);
       toast.info('Data refreshed');
-    }, 800);
+    }, 600);
   };
 
   const handleViewLogs = (rideId: string) => {
@@ -61,10 +58,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header onRefresh={handleRefresh} isLoading={isLoading} />
+      <Navbar onRefresh={handleRefresh} isLoading={isLoading} />
 
       <main className="container mx-auto px-4 sm:px-6 py-6 space-y-6">
-        {/* Filter Bar */}
         <FilterBar
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
@@ -72,9 +68,7 @@ const Index = () => {
           onStatusFilterChange={setStatusFilter}
         />
 
-        {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Ride Requests Table - Takes 2 columns on large screens */}
           <div className="lg:col-span-2">
             <RideRequestsTable
               rides={filteredRides}
@@ -83,14 +77,12 @@ const Index = () => {
             />
           </div>
 
-          {/* Event Feed - Takes 1 column */}
           <div className="lg:col-span-1">
             <EventFeed events={mockEvents} isLoading={isLoading} />
           </div>
         </div>
       </main>
 
-      {/* Log Viewer Drawer */}
       <LogViewer
         ride={selectedRide}
         logs={selectedLogs}
