@@ -4,6 +4,7 @@ import { FilterBar } from '@/components/dashboard/FilterBar';
 import { RideRequestsTable } from '@/components/dashboard/RideRequestsTable';
 import { LogViewer } from '@/components/dashboard/LogViewer';
 import { EventFeed } from '@/components/dashboard/EventFeed';
+import { SpaceBackground } from '@/components/dashboard/SpaceBackground';
 import { mockRideRequests, mockEvents, getLogsForRide } from '@/data/mockData';
 import { RideRequest, RideStatus, LogEntry } from '@/types/rides';
 import { toast } from 'sonner';
@@ -57,10 +58,11 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background/80 backdrop-blur-sm">
+      <SpaceBackground />
       <Navbar onRefresh={handleRefresh} isLoading={isLoading} />
 
-      <main className="container mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <main className="container mx-auto px-4 sm:px-6 py-6 space-y-6 animate-fade-in">
         <FilterBar
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
