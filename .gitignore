@@ -29,6 +29,7 @@ dist-ssr
 .env.production
 
 # Server specific
+server
 server/dist
 server/node_modules
 server/.env

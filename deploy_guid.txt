@@ -1,0 +1,100 @@
+ 1. Vercel (Frontend)
+
+  Steps to Set Environment Variables:
+
+  1. Go to https://vercel.com and open your project
+  2. Click Settings tab
+  3. Click Environment Variables in the left sidebar
+  4. Add the following variable:
+
+  | Name         | Value                                        | Environment |
+  |--------------|----------------------------------------------|-------------|
+  | VITE_API_URL | https://your-railway-backend-url.railway.app | Production  |
+
+  Important: Replace your-railway-backend-url with your actual Railway backend URL (you'll get this after deploying to Railway).
+
+  After Adding:
+
+  - Click Deployments tab
+  - Click the ⋮ menu on the latest deployment
+  - Click Redeploy to apply the new environment variable
+
+  ---
+  2. Railway (Backend)
+
+  Steps to Set Environment Variables:
+
+  1. Go to https://railway.app and open your project
+  2. Click on your backend service
+  3. Click Variables tab
+  4. Add these environment variables:
+
+  Required Variables:
+
+  | Variable                  | Value                                      | Description                                    |
+  |---------------------------|--------------------------------------------|------------------------------------------------|
+  | PORT                      | 3001                                       | Server port (Railway auto-assigns, but set it) |
+  | NODE_ENV                  | production                                 | Environment mode                               |
+  | FRONTEND_URL              | https://your-vercel-app.vercel.app         | Your Vercel frontend URL                       |
+  | DATABASE_URL              | (auto-generated if using Railway Postgres) | PostgreSQL connection string                   |
+  | CREDENTIAL_ENCRYPTION_KEY | your-secure-32-char-key-here!!             | Key for encrypting credentials                 |
+
+  Database Setup on Railway:
+
+  1. In your Railway project, click + New
+  2. Select Database → Add PostgreSQL
+  3. Railway will create a PostgreSQL database
+  4. Click on the database, go to Variables tab
+  5. Copy the DATABASE_URL value
+  6. Go back to your backend service and paste it in Variables
+
+  Optional (if not using in-app credential management):
+
+  If you want to set API credentials directly as environment variables instead of through the Settings page:
+
+  WHATSAPP_ACCESS_TOKEN=EAAW3teCxJTE...
+  WHATSAPP_PHONE_NUMBER_ID=your_phone_number_id
+  WHATSAPP_BUSINESS_ACCOUNT_ID=503563854395009
+  WHATSAPP_VERIFY_TOKEN=michame_verify_token_2024
+
+  MACHINE_GLOBAL_API_KEY=mch_api_8nLYkTW515GOmSC576BCLNUE
+  MACHINE_GLOBAL_USERNAME=your_username
+  MACHINE_GLOBAL_PASSWORD=your_password
+  MACHINE_GLOBAL_BASE_URL=https://api.taximachine.com.br
+
+  OPENAI_API_KEY=sk-...
+
+  TWILIO_ACCOUNT_SID=AC...
+  TWILIO_AUTH_TOKEN=...
+  TWILIO_PHONE_NUMBER=+5519...
+
+  ---
+  3. Quick Reference
+
+  Your URLs will look like:
+
+  | Platform        | URL Pattern                                            |
+  |-----------------|--------------------------------------------------------|
+  | Vercel Frontend | https://chat-dispatch.vercel.app or your custom domain |
+  | Railway Backend | https://chat-dispatch-production.up.railway.app        |
+
+  Connection Flow:
+
+  Frontend (Vercel)                    Backend (Railway)
+  VITE_API_URL ───────────────────────▶ :3001
+                                             │
+                                             ▼
+                                       DATABASE_URL ──▶ PostgreSQL (Railway)
+
+  ---
+  4. Verify Deployment
+
+  After setting up:
+
+  1. Backend Health Check:
+  https://your-railway-url.railway.app/health
+  1. Should return: {"status":"ok","service":"Mi Chame Backend"}
+  2. Frontend: Open your Vercel URL and check if the dashboard loads and connects to the backend
+
+  ---
+  Do you want me to help you with anything specific about the deployment, such as checking the Railway logs or troubleshooting connection issues?
