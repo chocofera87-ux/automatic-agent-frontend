@@ -1,6 +1,7 @@
 // API Client for Mi Chame Backend
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+// Remove trailing slash from API URL to prevent double slashes
+const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3001').replace(/\/$/, '');
 
 interface ApiResponse<T> {
   success: boolean;
