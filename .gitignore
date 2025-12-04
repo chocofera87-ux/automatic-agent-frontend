@@ -22,3 +22,22 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Server specific
+server/dist
+server/node_modules
+server/.env
+server/logs
+
+# Prisma
+server/prisma/*.db
+server/prisma/migrations/*.sql
+
+# Temporary files
+*.tmp
+*.temp

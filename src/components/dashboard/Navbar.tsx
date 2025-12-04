@@ -1,4 +1,4 @@
-import { MessageSquare, Activity, RefreshCw, Car, BarChart3, Settings, Menu } from 'lucide-react';
+import { MessageSquare, Activity, RefreshCw, Car, BarChart3, Settings, Menu, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { NavLink } from '@/components/NavLink';
 import { cn } from '@/lib/utils';
@@ -16,9 +16,9 @@ interface NavbarProps {
 
 const navItems = [
   { to: '/', label: 'Dashboard', icon: Activity },
-  { to: '/drivers', label: 'Drivers', icon: Car },
+  { to: '/drivers', label: 'Motoristas', icon: Car },
   { to: '/analytics', label: 'Analytics', icon: BarChart3 },
-  { to: '/settings', label: 'Settings', icon: Settings },
+  { to: '/settings', label: 'Config', icon: Settings },
 ];
 
 export function Navbar({ onRefresh, isLoading }: NavbarProps) {
@@ -27,16 +27,19 @@ export function Navbar({ onRefresh, isLoading }: NavbarProps) {
   return (
     <header className="border-b border-border bg-card px-4 sm:px-6 py-3">
       <div className="flex items-center justify-between">
-        {/* Logo */}
+        {/* Mi Chame Logo */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-            <MessageSquare className="w-5 h-5 text-primary" />
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] shadow-lg">
+            <Phone className="w-5 h-5 text-white" />
           </div>
           <div className="hidden sm:block">
-            <h1 className="text-base font-semibold text-foreground leading-tight">
-              Ride Automation
+            <h1 className="text-lg font-bold text-foreground leading-tight tracking-tight">
+              Mi Chame
             </h1>
-            <p className="text-xs text-muted-foreground">WhatsApp</p>
+            <p className="text-xs text-muted-foreground flex items-center gap-1">
+              <MessageSquare className="w-3 h-3" />
+              WhatsApp Taxi
+            </p>
           </div>
         </div>
 
