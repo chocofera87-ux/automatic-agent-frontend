@@ -314,45 +314,46 @@ const Settings = () => {
     setSavingKey(key);
     try {
       const response = await saveCredentials(service, { [key]: value.trim() });
+      setSavingKey(null);
+
       if (response.success) {
-        toast.success('Credencial salva com sucesso!');
+        // Update state first
         setEditingKeys(prev => ({ ...prev, [key]: false }));
         setCredentialForms(prev => ({
           ...prev,
           [service]: { ...prev[service], [key]: '' },
         }));
-        fetchCredentials();
-        checkMissingCredentials();
+
+        // Then fetch and show toast
+        await fetchCredentials();
+        await checkMissingCredentials();
+        toast.success('Credencial salva!');
       } else {
-        toast.error('Erro ao salvar: ' + (response.error || 'Erro desconhecido'));
+        toast.error(response.error || 'Erro ao salvar');
       }
     } catch (error: any) {
-      toast.error('Erro ao salvar: ' + (error.message || 'Erro desconhecido'));
-    } finally {
       setSavingKey(null);
+      toast.error(error.message || 'Erro ao salvar');
     }
   };
 
   // Delete a credential
   const handleDeleteCredential = async (key: string) => {
-    if (!confirm(`Tem certeza que deseja excluir a credencial ${key}?`)) {
-      return;
-    }
-
     setDeletingKey(key);
     try {
       const response = await deleteCredential(key);
+      setDeletingKey(null);
+
       if (response.success) {
+        await fetchCredentials();
+        await checkMissingCredentials();
         toast.success('Credencial excluída!');
-        fetchCredentials();
-        checkMissingCredentials();
       } else {
-        toast.error('Erro ao excluir: ' + (response.error || 'Erro desconhecido'));
+        toast.error(response.error || 'Erro ao excluir');
       }
     } catch (error: any) {
-      toast.error('Erro ao excluir: ' + (error.message || 'Erro desconhecido'));
-    } finally {
       setDeletingKey(null);
+      toast.error(error.message || 'Erro ao excluir');
     }
   };
 
@@ -378,68 +379,34 @@ const Settings = () => {
       <div className="space-y-4">
         {fields.map((field) => {
           const existing = existingCreds.find(c => c.key === field.key);
-          const isConfigured = existing?.isConfigured || false;
-          const isValid = existing?.isValid || false;
-          const isEditing = editingKeys[field.key] || false;
+          const isConfigured = existing?.isConfigured === true;
+          const isValid = existing?.isValid === true;
+          const isEditing = editingKeys[field.key] === true;
           const isSaving = savingKey === field.key;
           const isDeleting = deletingKey === field.key;
+          const showInput = !isConfigured || isEditing;
 
           return (
             <div key={field.key} className="p-3 rounded-lg border bg-muted/30">
-              {/* Header row with label and status */}
               <div className="flex items-center justify-between mb-2">
                 <Label className="flex items-center gap-2 text-sm font-medium">
                   {field.label}
-                  {field.required && <span className="text-red-500">*</span>}
+                  {field.required ? <span className="text-red-500">*</span> : null}
                 </Label>
-                <div className="flex items-center gap-2">
-                  {isConfigured && (
-                    <Badge variant="outline" className={isValid ? 'bg-green-500/10 text-green-600 border-green-500/30' : 'bg-yellow-500/10 text-yellow-600 border-yellow-500/30'}>
-                      {isValid ? '✓ Verificado' : '• Configurado'}
-                    </Badge>
-                  )}
-                  {!isConfigured && (
-                    <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/30">
-                      Não configurado
-                    </Badge>
-                  )}
-                </div>
+                <Badge
+                  variant="outline"
+                  className={
+                    isConfigured
+                      ? (isValid ? 'bg-green-500/10 text-green-600 border-green-500/30' : 'bg-yellow-500/10 text-yellow-600 border-yellow-500/30')
+                      : 'bg-red-500/10 text-red-500 border-red-500/30'
+                  }
+                >
+                  {isConfigured ? (isValid ? '✓ Verificado' : '• Configurado') : 'Não configurado'}
+                </Badge>
               </div>
 
-              {/* Show saved value OR input field */}
-              {isConfigured && !isEditing ? (
-                /* Configured: Show masked value with Edit/Delete buttons */
-                <div className="flex items-center gap-2">
-                  <div className="flex-1 px-3 py-2 bg-background rounded border font-mono text-sm text-muted-foreground">
-                    {existing?.maskedValue || '••••••••'}
-                  </div>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => startEditing(field.key)}
-                    className="gap-1"
-                  >
-                    <Pencil className="w-3 h-3" />
-                    Editar
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleDeleteCredential(field.key)}
-                    disabled={isDeleting}
-                    className="gap-1 text-red-500 hover:text-red-600 hover:bg-red-50"
-                  >
-                    {isDeleting ? (
-                      <Loader2 className="w-3 h-3 animate-spin" />
-                    ) : (
-                      <Trash2 className="w-3 h-3" />
-                    )}
-                    Excluir
-                  </Button>
-                </div>
-              ) : (
-                /* Not configured OR Editing: Show input field */
-                <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
+                {showInput ? (
                   <div className="relative flex-1">
                     <Input
                       id={field.key}
@@ -449,7 +416,7 @@ const Settings = () => {
                       onChange={(e) => updateCredentialForm(service, field.key, e.target.value)}
                       className="font-mono text-sm pr-10"
                     />
-                    {field.sensitive && (
+                    {field.sensitive ? (
                       <button
                         type="button"
                         onClick={() => togglePasswordVisibility(field.key)}
@@ -457,34 +424,61 @@ const Settings = () => {
                       >
                         {showPasswords[field.key] ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
-                    )}
+                    ) : null}
                   </div>
+                ) : (
+                  <div className="flex-1 px-3 py-2 bg-background rounded border font-mono text-sm text-muted-foreground">
+                    {existing?.maskedValue || '••••••••'}
+                  </div>
+                )}
+
+                {showInput ? (
                   <Button
                     size="sm"
                     onClick={() => handleSaveSingleCredential(service, field.key)}
                     disabled={isSaving || !credentialForms[service]?.[field.key]?.trim()}
                     className="gap-1"
                   >
-                    {isSaving ? (
-                      <Loader2 className="w-3 h-3 animate-spin" />
-                    ) : (
-                      <Check className="w-3 h-3" />
-                    )}
+                    {isSaving ? <Loader2 className="w-3 h-3 animate-spin" /> : <Check className="w-3 h-3" />}
                     Salvar
                   </Button>
-                  {isEditing && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => cancelEditing(service, field.key)}
-                      className="gap-1"
-                    >
-                      <X className="w-3 h-3" />
-                      Cancelar
-                    </Button>
-                  )}
-                </div>
-              )}
+                ) : (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => startEditing(field.key)}
+                    className="gap-1"
+                  >
+                    <Pencil className="w-3 h-3" />
+                    Editar
+                  </Button>
+                )}
+
+                {isEditing ? (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => cancelEditing(service, field.key)}
+                    className="gap-1"
+                  >
+                    <X className="w-3 h-3" />
+                    Cancelar
+                  </Button>
+                ) : null}
+
+                {isConfigured && !isEditing ? (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleDeleteCredential(field.key)}
+                    disabled={isDeleting}
+                    className="gap-1 text-red-500 hover:text-red-600 hover:bg-red-50"
+                  >
+                    {isDeleting ? <Loader2 className="w-3 h-3 animate-spin" /> : <Trash2 className="w-3 h-3" />}
+                    Excluir
+                  </Button>
+                ) : null}
+              </div>
             </div>
           );
         })}
