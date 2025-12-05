@@ -159,6 +159,9 @@ const Settings = () => {
       const response = await getCredentials();
       if (response.success && response.data) {
         setCredentials(response.data.grouped);
+      } else if (response.error) {
+        console.error('Failed to fetch credentials:', response.error);
+        // Don't show toast here to avoid spamming on page load
       }
     } catch (error) {
       console.error('Failed to fetch credentials:', error);
