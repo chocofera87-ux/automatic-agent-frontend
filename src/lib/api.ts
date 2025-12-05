@@ -3,10 +3,16 @@
 // Remove trailing slash from API URL to prevent double slashes
 const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3001').replace(/\/$/, '');
 
+// Token storage keys
+const ACCESS_TOKEN_KEY = 'michame_access_token';
+const REFRESH_TOKEN_KEY = 'michame_refresh_token';
+const USER_KEY = 'michame_user';
+
 interface ApiResponse<T> {
   success: boolean;
   data?: T;
   error?: string;
+  message?: string;
   pagination?: {
     page: number;
     limit: number;
@@ -15,18 +21,82 @@ interface ApiResponse<T> {
   };
 }
 
+// Get stored access token
+export function getAccessToken(): string | null {
+  return localStorage.getItem(ACCESS_TOKEN_KEY);
+}
+
+// Get stored refresh token
+export function getRefreshToken(): string | null {
+  return localStorage.getItem(REFRESH_TOKEN_KEY);
+}
+
+// Store tokens
+export function setTokens(accessToken: string, refreshToken: string): void {
+  localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+  localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
+}
+
+// Clear tokens
+export function clearTokens(): void {
+  localStorage.removeItem(ACCESS_TOKEN_KEY);
+  localStorage.removeItem(REFRESH_TOKEN_KEY);
+  localStorage.removeItem(USER_KEY);
+}
+
+// Store user data
+export function setStoredUser(user: AuthUser): void {
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+}
+
+// Get stored user
+export function getStoredUser(): AuthUser | null {
+  const user = localStorage.getItem(USER_KEY);
+  return user ? JSON.parse(user) : null;
+}
+
 async function fetchApi<T>(
   endpoint: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
+  includeAuth: boolean = true
 ): Promise<ApiResponse<T>> {
   try {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      ...(options.headers as Record<string, string>),
+    };
+
+    // Add auth token if available and requested
+    if (includeAuth) {
+      const token = getAccessToken();
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+    }
+
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
       ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options.headers,
-      },
+      headers,
     });
+
+    // Handle 401 Unauthorized - try to refresh token
+    if (response.status === 401 && includeAuth) {
+      const refreshed = await refreshAccessToken();
+      if (refreshed) {
+        // Retry the request with new token
+        headers['Authorization'] = `Bearer ${getAccessToken()}`;
+        const retryResponse = await fetch(`${API_BASE_URL}${endpoint}`, {
+          ...options,
+          headers,
+        });
+        return await retryResponse.json();
+      } else {
+        // Refresh failed, clear tokens and redirect to login
+        clearTokens();
+        window.location.href = '/login';
+        return { success: false, error: 'Session expired' };
+      }
+    }
 
     const data = await response.json();
     return data;
@@ -36,6 +106,29 @@ async function fetchApi<T>(
       success: false,
       error: error.message || 'Network error',
     };
+  }
+}
+
+// Refresh access token
+async function refreshAccessToken(): Promise<boolean> {
+  const refreshToken = getRefreshToken();
+  if (!refreshToken) return false;
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/auth/refresh`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ refreshToken }),
+    });
+
+    const data = await response.json();
+    if (data.success && data.data?.accessToken) {
+      localStorage.setItem(ACCESS_TOKEN_KEY, data.data.accessToken);
+      return true;
+    }
+    return false;
+  } catch {
+    return false;
   }
 }
 
@@ -336,4 +429,127 @@ export async function deleteCredential(key: string): Promise<ApiResponse<{ messa
   return fetchApi<any>(`/api/credentials/${key}`, {
     method: 'DELETE',
   });
+}
+
+// =====================================================
+// Authentication API
+// =====================================================
+
+export type UserRole = 'SUPER_ADMIN' | 'ADMIN' | 'OPERATOR' | 'VIEWER';
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  name: string;
+  role: UserRole;
+  isActive?: boolean;
+  lastLoginAt?: string;
+  createdAt?: string;
+}
+
+export interface LoginResponse {
+  user: AuthUser;
+  accessToken: string;
+  refreshToken: string;
+}
+
+export async function login(
+  email: string,
+  password: string
+): Promise<ApiResponse<LoginResponse>> {
+  const response = await fetchApi<LoginResponse>('/api/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  }, false);
+
+  // Store tokens and user if successful
+  if (response.success && response.data) {
+    setTokens(response.data.accessToken, response.data.refreshToken);
+    setStoredUser(response.data.user);
+  }
+
+  return response;
+}
+
+export async function logout(): Promise<ApiResponse<void>> {
+  const refreshToken = getRefreshToken();
+  const response = await fetchApi<void>('/api/auth/logout', {
+    method: 'POST',
+    body: JSON.stringify({ refreshToken }),
+  });
+
+  // Clear tokens regardless of response
+  clearTokens();
+
+  return response;
+}
+
+export async function getCurrentUser(): Promise<ApiResponse<AuthUser>> {
+  return fetchApi<AuthUser>('/api/auth/me');
+}
+
+export async function changePassword(
+  currentPassword: string,
+  newPassword: string
+): Promise<ApiResponse<void>> {
+  return fetchApi<void>('/api/auth/change-password', {
+    method: 'POST',
+    body: JSON.stringify({ currentPassword, newPassword }),
+  });
+}
+
+// =====================================================
+// User Management API (Admin only)
+// =====================================================
+
+export async function getUsers(): Promise<ApiResponse<AuthUser[]>> {
+  return fetchApi<AuthUser[]>('/api/auth/users');
+}
+
+export async function createUser(
+  email: string,
+  password: string,
+  name: string,
+  role: UserRole
+): Promise<ApiResponse<AuthUser>> {
+  return fetchApi<AuthUser>('/api/auth/users', {
+    method: 'POST',
+    body: JSON.stringify({ email, password, name, role }),
+  });
+}
+
+export async function updateUser(
+  userId: string,
+  data: { name?: string; email?: string; role?: UserRole; isActive?: boolean }
+): Promise<ApiResponse<AuthUser>> {
+  return fetchApi<AuthUser>(`/api/auth/users/${userId}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function resetUserPassword(
+  userId: string,
+  newPassword: string
+): Promise<ApiResponse<void>> {
+  return fetchApi<void>(`/api/auth/users/${userId}/reset-password`, {
+    method: 'POST',
+    body: JSON.stringify({ newPassword }),
+  });
+}
+
+export async function deleteUser(userId: string): Promise<ApiResponse<void>> {
+  return fetchApi<void>(`/api/auth/users/${userId}`, {
+    method: 'DELETE',
+  });
+}
+
+export async function setupInitialAdmin(): Promise<ApiResponse<{
+  email: string;
+  password: string;
+  note: string;
+}>> {
+  return fetchApi<any>('/api/auth/setup', {
+    method: 'POST',
+  }, false);
 }

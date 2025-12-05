@@ -1,28 +1,56 @@
-import { MessageSquare, Activity, RefreshCw, Car, BarChart3, Settings, Menu, Phone } from 'lucide-react';
+import { MessageSquare, Activity, RefreshCw, Car, BarChart3, Settings, Menu, Phone, Users, LogOut, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { NavLink } from '@/components/NavLink';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 interface NavbarProps {
   onRefresh?: () => void;
   isLoading?: boolean;
 }
 
-const navItems = [
-  { to: '/', label: 'Dashboard', icon: Activity },
-  { to: '/drivers', label: 'Motoristas', icon: Car },
-  { to: '/analytics', label: 'Analytics', icon: BarChart3 },
-  { to: '/settings', label: 'Config', icon: Settings },
-];
-
 export function Navbar({ onRefresh, isLoading }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user, logout, isAdmin } = useAuth();
+  const navigate = useNavigate();
+
+  const navItems = [
+    { to: '/', label: 'Dashboard', icon: Activity, show: true },
+    { to: '/drivers', label: 'Motoristas', icon: Car, show: true },
+    { to: '/analytics', label: 'Analytics', icon: BarChart3, show: true },
+    { to: '/users', label: 'Usuários', icon: Users, show: isAdmin },
+    { to: '/settings', label: 'Config', icon: Settings, show: isAdmin },
+  ].filter(item => item.show);
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/login');
+  };
+
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(n => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
 
   return (
     <header className="border-b border-border bg-card px-4 sm:px-6 py-3">
@@ -76,6 +104,37 @@ export function Navbar({ onRefresh, isLoading }: NavbarProps) {
             <span className="hidden lg:inline">Refresh</span>
           </Button>
 
+          {/* User Menu */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="relative">
+                <Avatar className="h-8 w-8">
+                  <AvatarFallback className="bg-primary text-primary-foreground text-xs">
+                    {user ? getInitials(user.name) : 'U'}
+                  </AvatarFallback>
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>
+                <div className="flex flex-col space-y-1">
+                  <p className="text-sm font-medium">{user?.name}</p>
+                  <p className="text-xs text-muted-foreground">{user?.email}</p>
+                </div>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => navigate('/settings')} disabled={!isAdmin}>
+                <Settings className="w-4 h-4 mr-2" />
+                Configurações
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={handleLogout} className="text-destructive">
+                <LogOut className="w-4 h-4 mr-2" />
+                Sair
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           {/* Mobile Menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
@@ -85,7 +144,17 @@ export function Navbar({ onRefresh, isLoading }: NavbarProps) {
             </SheetTrigger>
             <SheetContent side="right" className="w-64 p-0">
               <div className="p-4 border-b border-border">
-                <h2 className="font-semibold">Navigation</h2>
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-10 w-10">
+                    <AvatarFallback className="bg-primary text-primary-foreground">
+                      {user ? getInitials(user.name) : 'U'}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <p className="font-semibold text-sm">{user?.name}</p>
+                    <p className="text-xs text-muted-foreground">{user?.role}</p>
+                  </div>
+                </div>
               </div>
               <nav className="p-2">
                 {navItems.map((item) => (
@@ -101,6 +170,16 @@ export function Navbar({ onRefresh, isLoading }: NavbarProps) {
                     {item.label}
                   </NavLink>
                 ))}
+                <button
+                  onClick={() => {
+                    setMobileOpen(false);
+                    handleLogout();
+                  }}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-destructive hover:bg-destructive/10 transition-colors w-full mt-4"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Sair
+                </button>
               </nav>
             </SheetContent>
           </Sheet>
