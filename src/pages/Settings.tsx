@@ -214,22 +214,25 @@ const Settings = () => {
     try {
       const response = await saveCredentials(service, nonEmptyCredentials);
       if (response.success) {
-        toast.success('Credenciais salvas!', {
-          description: `${response.data?.savedKeys.length || 0} credenciais atualizadas`,
-        });
-        // Clear form and refresh
+        const savedCount = response.data?.savedKeys?.length ?? Object.keys(nonEmptyCredentials).length;
+        // Clear form first before showing toast
         setCredentialForms(prev => ({ ...prev, [service]: {} }));
-        fetchCredentials();
-        checkMissingCredentials();
+
+        // Use setTimeout to avoid React DOM conflicts
+        setTimeout(() => {
+          toast.success(`${savedCount} credenciais salvas com sucesso!`);
+        }, 100);
+
+        // Refresh data after a small delay
+        setTimeout(() => {
+          fetchCredentials();
+          checkMissingCredentials();
+        }, 200);
       } else {
-        toast.error('Erro ao salvar', {
-          description: response.error,
-        });
+        toast.error('Erro ao salvar: ' + (response.error || 'Erro desconhecido'));
       }
     } catch (error: any) {
-      toast.error('Erro ao salvar credenciais', {
-        description: error.message,
-      });
+      toast.error('Erro ao salvar credenciais: ' + (error.message || 'Erro desconhecido'));
     } finally {
       setSavingService(null);
     }
@@ -240,20 +243,20 @@ const Settings = () => {
     try {
       const response = await testCredentials(service);
       if (response.success && response.data?.success) {
-        toast.success('Conexão bem sucedida!', {
-          description: response.data.message,
-        });
-        fetchCredentials();
-        fetchHealth();
+        const message = response.data.message || 'Conexão bem sucedida!';
+        setTimeout(() => {
+          toast.success(message);
+        }, 100);
+        setTimeout(() => {
+          fetchCredentials();
+          fetchHealth();
+        }, 200);
       } else {
-        toast.error('Falha na conexão', {
-          description: response.data?.error || response.error || 'Verifique as credenciais',
-        });
+        const errorMsg = response.data?.error || response.error || 'Verifique as credenciais';
+        toast.error('Falha na conexão: ' + errorMsg);
       }
     } catch (error: any) {
-      toast.error('Erro ao testar', {
-        description: error.message,
-      });
+      toast.error('Erro ao testar: ' + (error.message || 'Erro desconhecido'));
     } finally {
       setTestingService(null);
     }
