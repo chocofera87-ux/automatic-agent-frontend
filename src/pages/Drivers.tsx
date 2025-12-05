@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Navbar } from '@/components/dashboard/Navbar';
 import { mockDrivers, driverStats, Driver } from '@/data/driversData';
 import { formatRelativeTime, formatPrice, formatPhoneNumber } from '@/utils/formatters';
@@ -30,6 +30,15 @@ const vehicleIcons = {
 
 const Drivers = () => {
   const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleRefresh = useCallback(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      window.location.reload();
+    }, 500);
+  }, []);
 
   const filteredDrivers = mockDrivers.filter(d =>
     d.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -39,7 +48,7 @@ const Drivers = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar onRefresh={handleRefresh} isLoading={isLoading} />
 
       <main className="container mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Stats Cards */}

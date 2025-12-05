@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Navbar } from '@/components/dashboard/Navbar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -129,6 +129,9 @@ const Settings = () => {
   const [healthStatus, setHealthStatus] = useState<HealthStatus | null>(null);
   const [isLoadingHealth, setIsLoadingHealth] = useState(true);
 
+  // Refresh state
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
   // Settings state
   const [settings, setSettings] = useState({
     autoReply: true,
@@ -136,6 +139,14 @@ const Settings = () => {
     notifyFailures: true,
     notifyNoDriver: true,
   });
+
+  const handleRefresh = useCallback(() => {
+    setIsRefreshing(true);
+    fetchCredentials();
+    fetchHealth();
+    checkMissingCredentials();
+    setTimeout(() => setIsRefreshing(false), 1000);
+  }, []);
 
   useEffect(() => {
     fetchCredentials();
@@ -337,7 +348,7 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar onRefresh={handleRefresh} isLoading={isRefreshing} />
 
       <main className="container mx-auto px-4 sm:px-6 py-6 max-w-4xl">
         <div className="space-y-6">

@@ -3,6 +3,7 @@ import { weeklyStats, hourlyDistribution, overviewStats, statusBreakdown } from 
 import { formatPrice } from '@/utils/formatters';
 import { TrendingUp, DollarSign, CheckCircle, Clock, Zap, Trophy } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useState, useCallback } from 'react';
 import {
   AreaChart,
   Area,
@@ -19,9 +20,20 @@ import {
 } from 'recharts';
 
 const Analytics = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleRefresh = useCallback(() => {
+    setIsLoading(true);
+    // Simulate refresh - in real app this would fetch new data from API
+    setTimeout(() => {
+      setIsLoading(false);
+      window.location.reload();
+    }, 500);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar onRefresh={handleRefresh} isLoading={isLoading} />
 
       <main className="container mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Overview Stats */}
