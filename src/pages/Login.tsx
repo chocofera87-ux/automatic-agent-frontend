@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Phone, Loader2, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { Phone, Loader2, Eye, EyeOff, AlertCircle, ArrowLeft } from 'lucide-react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Login = () => {
   const [error, setError] = useState('');
 
   // Get the page user was trying to access
-  const from = (location.state as any)?.from?.pathname || '/';
+  const from = (location.state as any)?.from?.pathname || '/dashboard';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,6 +40,15 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted flex items-center justify-center p-4">
+      {/* Back to Landing */}
+      <Link
+        to="/"
+        className="absolute top-6 left-6 flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        <span className="text-sm font-medium">Voltar</span>
+      </Link>
+
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">

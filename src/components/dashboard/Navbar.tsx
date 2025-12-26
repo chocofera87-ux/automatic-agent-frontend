@@ -31,7 +31,7 @@ export function Navbar({ onRefresh, isLoading }: NavbarProps) {
   const navigate = useNavigate();
 
   const navItems = [
-    { to: '/', label: 'Dashboard', icon: Activity, show: true },
+    { to: '/dashboard', label: 'Dashboard', icon: Activity, show: true },
     { to: '/drivers', label: 'Motoristas', icon: Car, show: true },
     { to: '/analytics', label: 'Analytics', icon: BarChart3, show: true },
     { to: '/users', label: 'Usuários', icon: Users, show: isAdmin },
@@ -77,7 +77,7 @@ export function Navbar({ onRefresh, isLoading }: NavbarProps) {
             <NavLink
               key={item.to}
               to={item.to}
-              end={item.to === '/'}
+              end={item.to === '/dashboard'}
               className="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
               activeClassName="text-foreground bg-muted"
             >
@@ -161,7 +161,7 @@ export function Navbar({ onRefresh, isLoading }: NavbarProps) {
                   <NavLink
                     key={item.to}
                     to={item.to}
-                    end={item.to === '/'}
+                    end={item.to === '/dashboard'}
                     onClick={() => setMobileOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
                     activeClassName="text-foreground bg-muted"
