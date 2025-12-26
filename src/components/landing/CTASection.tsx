@@ -4,15 +4,24 @@ import { Button } from "@/components/ui/button";
 export const CTASection = () => {
   return (
     <section className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#25D366] to-[#128C7E]" />
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#25D366]/95 to-[#128C7E]/95 z-[1]" />
 
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 z-[2]" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 z-[2]" />
 
       {/* Content */}
-      <div className="relative container mx-auto px-4 sm:px-6">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
           {/* Icon */}
           <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center animate-float">

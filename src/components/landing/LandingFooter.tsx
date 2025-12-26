@@ -12,8 +12,17 @@ export const LandingFooter = () => {
   };
 
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <footer className="bg-foreground text-background relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover opacity-10"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 py-12 md:py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">

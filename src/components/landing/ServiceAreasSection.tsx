@@ -15,51 +15,73 @@ const serviceAreas = [
 
 export const ServiceAreasSection = () => {
   return (
-    <section id="cobertura" className="py-20 md:py-32 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="cobertura" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background Image - Aerial city view */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover opacity-[0.04]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-muted/95 via-muted/90 to-muted/95" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <SectionHeader
           badge="Cobertura"
           title="Onde atendemos"
           subtitle="Estamos presentes nas principais cidades da região de São Paulo."
         />
 
-        <div className="max-w-3xl mx-auto">
-          {/* Map Illustration */}
+        <div className="max-w-4xl mx-auto">
+          {/* Map Image */}
           <div className="relative mb-12">
-            <div className="aspect-video bg-gradient-to-br from-[#25D366]/10 to-[#128C7E]/10 rounded-2xl border border-[#25D366]/20 flex items-center justify-center overflow-hidden">
-              {/* Decorative Elements */}
-              <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-[#25D366] animate-pulse-subtle" />
-                <div className="absolute top-1/3 right-1/3 w-2 h-2 rounded-full bg-[#128C7E] animate-pulse-subtle" style={{ animationDelay: "0.5s" }} />
-                <div className="absolute bottom-1/3 left-1/3 w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse-subtle" style={{ animationDelay: "1s" }} />
-                <div className="absolute top-1/2 right-1/4 w-2 h-2 rounded-full bg-[#128C7E] animate-pulse-subtle" style={{ animationDelay: "1.5s" }} />
-                <div className="absolute bottom-1/4 right-1/2 w-3 h-3 rounded-full bg-[#25D366] animate-pulse-subtle" style={{ animationDelay: "0.8s" }} />
+            <div className="aspect-video rounded-2xl border border-[#25D366]/20 overflow-hidden shadow-xl relative group">
+              {/* São Paulo Region Map Image */}
+              <img
+                src="https://images.unsplash.com/photo-1619468129361-605ebea04b44?w=1200&q=80"
+                alt="Região de São Paulo"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
 
-                {/* Connection Lines */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <path
-                    d="M25,25 L33,33 L33,66 L50,75 L75,50"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="0.3"
-                    fill="none"
-                    strokeDasharray="2,2"
-                    className="opacity-50"
-                  />
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#25D366" />
-                      <stop offset="100%" stopColor="#128C7E" />
-                    </linearGradient>
-                  </defs>
-                </svg>
+              {/* Overlay with gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+
+              {/* Animated location pins */}
+              <div className="absolute inset-0">
+                <div className="absolute top-[25%] left-[30%] animate-pulse-subtle">
+                  <div className="w-4 h-4 rounded-full bg-[#25D366] shadow-lg shadow-[#25D366]/50" />
+                  <div className="absolute -inset-2 rounded-full bg-[#25D366]/30 animate-ping" />
+                </div>
+                <div className="absolute top-[35%] left-[45%] animate-pulse-subtle" style={{ animationDelay: "0.3s" }}>
+                  <div className="w-3 h-3 rounded-full bg-[#128C7E] shadow-lg shadow-[#128C7E]/50" />
+                  <div className="absolute -inset-2 rounded-full bg-[#128C7E]/30 animate-ping" style={{ animationDelay: "0.3s" }} />
+                </div>
+                <div className="absolute top-[50%] left-[55%] animate-pulse-subtle" style={{ animationDelay: "0.6s" }}>
+                  <div className="w-4 h-4 rounded-full bg-[#25D366] shadow-lg shadow-[#25D366]/50" />
+                  <div className="absolute -inset-2 rounded-full bg-[#25D366]/30 animate-ping" style={{ animationDelay: "0.6s" }} />
+                </div>
+                <div className="absolute top-[40%] left-[70%] animate-pulse-subtle" style={{ animationDelay: "0.9s" }}>
+                  <div className="w-3 h-3 rounded-full bg-[#128C7E] shadow-lg shadow-[#128C7E]/50" />
+                  <div className="absolute -inset-2 rounded-full bg-[#128C7E]/30 animate-ping" style={{ animationDelay: "0.9s" }} />
+                </div>
+                <div className="absolute top-[60%] left-[40%] animate-pulse-subtle" style={{ animationDelay: "1.2s" }}>
+                  <div className="w-5 h-5 rounded-full bg-[#25D366] shadow-lg shadow-[#25D366]/50" />
+                  <div className="absolute -inset-2 rounded-full bg-[#25D366]/30 animate-ping" style={{ animationDelay: "1.2s" }} />
+                </div>
               </div>
 
-              <div className="relative text-center p-8">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <MapPin className="w-8 h-8 text-white" />
+              {/* Info Card Overlay */}
+              <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-auto">
+                <div className="bg-card/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-border flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-lg flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Região de São Paulo</p>
+                    <p className="text-sm text-muted-foreground">DDD 19 • 8 cidades atendidas</p>
+                  </div>
                 </div>
-                <p className="text-lg font-semibold text-foreground">Região de São Paulo</p>
-                <p className="text-sm text-muted-foreground mt-1">DDD 19</p>
               </div>
             </div>
           </div>

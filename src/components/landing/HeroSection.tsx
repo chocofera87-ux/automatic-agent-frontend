@@ -1,7 +1,10 @@
-import { MessageCircle, ArrowDown, Sparkles } from "lucide-react";
+import { MessageCircle, ArrowDown, Sparkles, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export const HeroSection = () => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+
   const scrollToFeatures = () => {
     const element = document.querySelector("#recursos");
     if (element) {
@@ -11,16 +14,36 @@ export const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#25D366]/5 via-background to-[#128C7E]/5" />
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute w-full h-full object-cover"
+          poster="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
+        >
+          {/* Taxi/City driving video */}
+          <source
+            src="https://cdn.coverr.co/videos/coverr-driving-through-a-city-at-night-4866/1080p.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/95" />
+      </div>
+
+      {/* Animated Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#25D366]/10 via-transparent to-[#128C7E]/10 z-[1]" />
 
       {/* Animated Circles */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-[#25D366]/10 rounded-full blur-3xl animate-pulse-subtle" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#128C7E]/10 rounded-full blur-3xl animate-pulse-subtle" style={{ animationDelay: "1s" }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#25D366]/5 to-[#128C7E]/5 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#25D366]/20 rounded-full blur-3xl animate-pulse-subtle z-[1]" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#128C7E]/20 rounded-full blur-3xl animate-pulse-subtle z-[1]" style={{ animationDelay: "1s" }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#25D366]/10 to-[#128C7E]/10 rounded-full blur-3xl z-[1]" />
 
       {/* Content */}
-      <div className="relative container mx-auto px-4 sm:px-6 pt-24 pb-12">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-24 pb-12">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366]/10 border border-[#25D366]/20 mb-8 animate-fade-in">
@@ -127,7 +150,7 @@ export const HeroSection = () => {
           {/* Scroll Indicator */}
           <button
             onClick={scrollToFeatures}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors animate-bounce"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors animate-bounce z-10"
           >
             <ArrowDown className="w-6 h-6" />
           </button>

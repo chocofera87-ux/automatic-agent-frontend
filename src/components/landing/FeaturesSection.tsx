@@ -50,8 +50,18 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <section id="recursos" className="py-20 md:py-32 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="recursos" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1557404763-69708cd8b9ce?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover opacity-5"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-muted/95 via-muted/90 to-muted/95" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <SectionHeader
           badge="Recursos"
           title="Por que escolher o Mi Chame?"

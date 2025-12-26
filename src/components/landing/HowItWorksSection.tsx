@@ -30,8 +30,18 @@ const steps = [
 
 export const HowItWorksSection = () => {
   return (
-    <section id="como-funciona" className="py-20 md:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="como-funciona" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover opacity-[0.03]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/98 to-background" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <SectionHeader
           badge="Passo a Passo"
           title="Como funciona?"
