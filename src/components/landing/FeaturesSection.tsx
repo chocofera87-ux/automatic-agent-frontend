@@ -50,7 +50,7 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <section id="recursos" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="recursos" className="py-12 sm:py-16 md:py-20 lg:py-32 relative overflow-hidden">
       {/* Background Image - People using phones */}
       <div className="absolute inset-0 z-0">
         <img
@@ -61,14 +61,14 @@ export const FeaturesSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-muted/95 via-muted/90 to-muted/95" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
           badge="Vantagens"
           title="Por que as pessoas escolhem o Mi Chame?"
           subtitle="Serviço local de confiança, do jeito que você gosta. Simples, rápido e sem complicação."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div
               key={feature.title}

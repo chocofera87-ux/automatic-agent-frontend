@@ -10,7 +10,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background - City/taxi driving theme */}
       <div className="absolute inset-0 z-0">
         <video
@@ -27,63 +27,63 @@ export const HeroSection = () => {
             type="video/mp4"
           />
         </video>
-        {/* Enhanced dark overlay with gradient for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/95 via-[#141414]/85 to-[#141414]/95" />
+        {/* Enhanced dark overlay with gradient for better text readability - Darker on mobile */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/98 via-[#141414]/90 to-[#141414]/98 md:from-[#141414]/95 md:via-[#141414]/85 md:to-[#141414]/95" />
         {/* Vignette effect for cinematic look */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(20,20,20,0.4)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(20,20,20,0.5)_100%)]" />
       </div>
 
       {/* Animated Gradient Overlay - Subtle yellow glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#FFCC00]/10 via-transparent to-[#FFCC00]/5 z-[1] animate-pulse-slow" />
 
-      {/* Animated Light Effects - Yellow theme */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-[#FFCC00]/20 rounded-full blur-[100px] animate-pulse-subtle z-[1]" />
-      <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#FFCC00]/15 rounded-full blur-[120px] animate-pulse-subtle z-[1]" style={{ animationDelay: "1.5s" }} />
-      <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-[#FFCC00]/10 rounded-full blur-[80px] animate-float z-[1]" style={{ animationDelay: "0.5s" }} />
+      {/* Animated Light Effects - Yellow theme - Hidden on mobile for performance */}
+      <div className="hidden md:block absolute top-20 left-10 w-96 h-96 bg-[#FFCC00]/20 rounded-full blur-[100px] animate-pulse-subtle z-[1]" />
+      <div className="hidden md:block absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#FFCC00]/15 rounded-full blur-[120px] animate-pulse-subtle z-[1]" style={{ animationDelay: "1.5s" }} />
+      <div className="hidden lg:block absolute top-1/3 right-1/4 w-64 h-64 bg-[#FFCC00]/10 rounded-full blur-[80px] animate-float z-[1]" style={{ animationDelay: "0.5s" }} />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-8">
-        <div className="max-w-6xl mx-auto text-center flex flex-col justify-center h-full">
-          {/* Badge - Local trust focus with enhanced styling */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFCC00]/15 border-2 border-[#FFCC00]/40 backdrop-blur-sm mb-4 animate-fade-in shadow-lg shadow-[#FFCC00]/10">
-            <MapPin className="w-4 h-4 text-[#FFCC00]" />
-            <span className="text-xs font-semibold text-[#FFCC00] tracking-wide">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8">
+        <div className="max-w-6xl mx-auto text-center flex flex-col justify-center min-h-[calc(100vh-2rem)] md:h-full">
+          {/* Badge - Responsive sizing */}
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#FFCC00]/15 border-2 border-[#FFCC00]/40 backdrop-blur-sm mb-3 sm:mb-4 animate-fade-in shadow-lg shadow-[#FFCC00]/10">
+            <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFCC00]" />
+            <span className="text-[10px] sm:text-xs font-semibold text-[#FFCC00] tracking-wide">
               Motoristas locais da sua cidade
             </span>
           </div>
 
-          {/* Main Headline - Optimized for full screen */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 animate-fade-in leading-tight tracking-tight" style={{ animationDelay: "0.1s" }}>
+          {/* Main Headline - Responsive typography */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-3 sm:mb-4 animate-fade-in leading-tight tracking-tight px-2" style={{ animationDelay: "0.1s" }}>
             Seu táxi de confiança,{" "}
-            <span className="text-[#FFCC00] drop-shadow-[0_0_30px_rgba(255,204,0,0.5)]">
+            <span className="text-[#FFCC00] drop-shadow-[0_0_20px_rgba(255,204,0,0.4)] sm:drop-shadow-[0_0_30px_rgba(255,204,0,0.5)]">
               sem baixar app
             </span>
           </h1>
 
-          {/* Subheadline - Optimized */}
-          <p className="text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto mb-6 animate-fade-in leading-relaxed font-light" style={{ animationDelay: "0.2s" }}>
+          {/* Subheadline - Responsive */}
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-xl md:max-w-2xl mx-auto mb-4 sm:mb-6 animate-fade-in leading-relaxed font-light px-4" style={{ animationDelay: "0.2s" }}>
             Chame um táxi pelo WhatsApp em segundos. Motoristas conhecidos da região,
             atendimento rápido e sem complicação. É só mandar uma mensagem!
           </p>
 
-          {/* Trust indicators with icons - Compact */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-8 animate-fade-in" style={{ animationDelay: "0.25s" }}>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
-              <Car className="w-4 h-4 text-[#FFCC00]" />
-              <span className="text-xs font-medium text-gray-200">Frota local</span>
+          {/* Trust indicators - Mobile optimized */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8 animate-fade-in px-2" style={{ animationDelay: "0.25s" }}>
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+              <Car className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFCC00]" />
+              <span className="text-[10px] sm:text-xs font-medium text-gray-200">Frota local</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
-              <Clock className="w-4 h-4 text-[#FFCC00]" />
-              <span className="text-xs font-medium text-gray-200">Resposta rápida</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFCC00]" />
+              <span className="text-[10px] sm:text-xs font-medium text-gray-200">Resposta rápida</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
-              <Shield className="w-4 h-4 text-[#FFCC00]" />
-              <span className="text-xs font-medium text-gray-200">Confiável e seguro</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+              <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFCC00]" />
+              <span className="text-[10px] sm:text-xs font-medium text-gray-200">Confiável e seguro</span>
             </div>
           </div>
 
-          {/* CTA Buttons - Compact design */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          {/* CTA Buttons - Mobile friendly with touch targets */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 animate-fade-in px-4 sm:px-0" style={{ animationDelay: "0.3s" }}>
             <a
               href="https://wa.me/5519992753360"
               target="_blank"
@@ -91,23 +91,23 @@ export const HeroSection = () => {
               className="w-full sm:w-auto"
             >
               <Button
-                className="w-full sm:w-auto bg-[#FFCC00] hover:bg-[#E6B800] text-[#141414] text-base px-8 py-5 rounded-2xl shadow-2xl shadow-[#FFCC00]/30 hover:shadow-[#FFCC00]/50 transition-all duration-300 hover:scale-105 font-bold tracking-wide border-2 border-[#FFCC00]/50 hover:border-[#FFCC00]"
+                className="w-full sm:w-auto bg-[#FFCC00] hover:bg-[#E6B800] active:bg-[#D4A800] text-[#141414] text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 rounded-xl sm:rounded-2xl shadow-2xl shadow-[#FFCC00]/30 hover:shadow-[#FFCC00]/50 transition-all duration-300 sm:hover:scale-105 active:scale-95 font-bold tracking-wide border-2 border-[#FFCC00]/50 hover:border-[#FFCC00] touch-manipulation"
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Pedir um táxi agora
               </Button>
             </a>
             <Button
               onClick={scrollToFeatures}
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white text-base px-8 py-5 rounded-2xl shadow-xl border-2 border-white/30 hover:border-white/50 transition-all duration-300 hover:scale-105 font-semibold"
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-md text-white text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 rounded-xl sm:rounded-2xl shadow-xl border-2 border-white/30 hover:border-white/50 transition-all duration-300 sm:hover:scale-105 active:scale-95 font-semibold touch-manipulation"
             >
               Como funciona
-              <ArrowDown className="w-4 h-4 ml-2" />
+              <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
             </Button>
           </div>
 
-          {/* Phone Mockup - Compact design */}
-          <div className="relative max-w-xs mx-auto animate-float">
+          {/* Phone Mockup - Responsive, hidden on small mobile */}
+          <div className="hidden sm:block relative max-w-xs mx-auto animate-float">
             <div className="relative bg-gradient-to-br from-[#141414] to-[#1a1a1a] rounded-[3rem] p-3 shadow-2xl border-2 border-[#FFCC00]/30">
               {/* Phone Frame */}
               <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-inner">
@@ -165,14 +165,14 @@ export const HeroSection = () => {
             <div className="absolute -inset-6 bg-[#FFCC00]/10 rounded-[5rem] blur-[80px] -z-10" />
           </div>
 
-          {/* Scroll Indicator - Positioned at bottom */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          {/* Scroll Indicator - Visible on desktop only */}
+          <div className="hidden md:block absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2">
             <button
               onClick={scrollToFeatures}
-              className="text-gray-300 hover:text-[#FFCC00] transition-all duration-300 animate-bounce p-2 rounded-full hover:bg-[#FFCC00]/10"
+              className="text-gray-300 hover:text-[#FFCC00] transition-all duration-300 animate-bounce p-2 rounded-full hover:bg-[#FFCC00]/10 touch-manipulation"
               aria-label="Scroll to features"
             >
-              <ArrowDown className="w-6 h-6" />
+              <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         </div>
