@@ -1,0 +1,16 @@
+<svg width="300" height="80" viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Location pin icon -->
+  <g transform="translate(10, 15)">
+    <path d="M25 5C18.3726 5 13 10.3726 13 17C13 23.6274 25 40 25 40C25 40 37 23.6274 37 17C37 10.3726 31.6274 5 25 5Z" stroke="white" stroke-width="2.5" fill="none"/>
+    <circle cx="25" cy="17" r="4" fill="white"/>
+  </g>
+
+  <!-- "mi" in yellow -->
+  <text x="60" y="55" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#FFCC00">mi</text>
+
+  <!-- "chame" in white -->
+  <text x="115" y="55" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">chame</text>
+
+  <!-- Registered trademark symbol -->
+  <text x="285" y="25" font-family="Arial, sans-serif" font-size="14" fill="white">®</text>
+</svg>

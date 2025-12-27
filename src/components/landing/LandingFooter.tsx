@@ -28,7 +28,7 @@ export const LandingFooter = () => {
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <img
-                src="/logo.pdf"
+                src="/logo.svg"
                 alt="Mi Chame"
                 className="h-10 w-auto hover:scale-105 transition-transform duration-300"
               />

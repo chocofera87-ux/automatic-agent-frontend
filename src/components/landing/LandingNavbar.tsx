@@ -45,7 +45,7 @@ export const LandingNavbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <img
-              src="/logo.pdf"
+              src="/logo.svg"
               alt="Mi Chame"
               className="h-10 md:h-12 w-auto group-hover:scale-105 transition-transform duration-300"
             />
