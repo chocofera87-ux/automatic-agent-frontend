@@ -78,8 +78,8 @@ export function ConversationsPanel({ onSelectConversation, className }: Conversa
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-base flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-[#25D366]/10">
-              <MessageSquare className="w-4 h-4 text-[#25D366]" />
+            <div className="p-1.5 rounded-lg bg-[#FFCC00]/10">
+              <MessageSquare className="w-4 h-4 text-[#FFCC00]" />
             </div>
             Conversas WhatsApp
           </CardTitle>
@@ -129,13 +129,13 @@ export function ConversationsPanel({ onSelectConversation, className }: Conversa
                   >
                     <div className="flex items-start gap-3">
                       {/* Avatar */}
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-[#FFCC00] flex items-center justify-center flex-shrink-0">
                         {conv.customer.name ? (
-                          <span className="text-white font-semibold text-sm">
+                          <span className="text-[#141414] font-semibold text-sm">
                             {conv.customer.name.charAt(0).toUpperCase()}
                           </span>
                         ) : (
-                          <User className="w-5 h-5 text-white" />
+                          <User className="w-5 h-5 text-[#141414]" />
                         )}
                       </div>
 
@@ -161,7 +161,7 @@ export function ConversationsPanel({ onSelectConversation, className }: Conversa
                         {conv.lastMessage && (
                           <p className="text-xs text-muted-foreground truncate mb-1.5">
                             {conv.lastMessage.direction === 'OUTGOING' && (
-                              <span className="text-[#25D366] mr-1">Mi:</span>
+                              <span className="text-[#FFCC00] mr-1">Mi:</span>
                             )}
                             {conv.lastMessage.content.slice(0, 50)}
                             {conv.lastMessage.content.length > 50 ? '...' : ''}

@@ -15,13 +15,15 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* Mi Chame WhatsApp Green Theme */
-    --primary: 152 69% 49%;
-    --primary-foreground: 0 0% 100%;
+    /* Mi Chame Brand Theme - Yellow & Black */
+    --primary: 45 100% 51%;
+    --primary-foreground: 0 0% 0%;
 
-    /* WhatsApp Brand Colors */
-    --whatsapp: 142 70% 49%;
-    --whatsapp-dark: 152 69% 31%;
+    /* Mi Chame Brand Colors */
+    --brand-yellow: 45 100% 51%;
+    --brand-yellow-dark: 45 100% 42%;
+    --brand-black: 0 0% 8%;
+    --brand-gold: 43 96% 56%;
 
     --secondary: 215 20% 95%;
     --secondary-foreground: 222 47% 11%;
@@ -37,7 +39,7 @@
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 199 89% 48%;
+    --ring: 45 100% 51%;
 
     --radius: 0.5rem;
 

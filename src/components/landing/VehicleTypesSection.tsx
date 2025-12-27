@@ -7,7 +7,7 @@ const vehicleTypes = [
     name: "Carro",
     description: "Veículo padrão para até 4 passageiros",
     tag: "Mais popular",
-    tagColor: "bg-[#25D366]",
+    tagColor: "bg-[#FFCC00] text-[#141414]",
     image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&q=80",
   },
   {
@@ -15,7 +15,7 @@ const vehicleTypes = [
     name: "Moto",
     description: "Ideal para 1 pessoa com pressa",
     tag: "Mais rápido",
-    tagColor: "bg-blue-500",
+    tagColor: "bg-blue-500 text-white",
     image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&q=80",
   },
   {
@@ -23,7 +23,7 @@ const vehicleTypes = [
     name: "Premium",
     description: "Veículo executivo com mais conforto",
     tag: "Mais conforto",
-    tagColor: "bg-amber-500",
+    tagColor: "bg-amber-500 text-[#141414]",
     image: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=400&q=80",
   },
   {
@@ -31,7 +31,7 @@ const vehicleTypes = [
     name: "Corporativo",
     description: "Para empresas com faturamento mensal",
     tag: "Para empresas",
-    tagColor: "bg-purple-500",
+    tagColor: "bg-purple-500 text-white",
     image: "https://images.unsplash.com/photo-1511527844068-006b95d162c2?w=400&q=80",
   },
 ];
@@ -63,10 +63,10 @@ export const VehicleTypesSection = () => {
               className="animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-[#25D366]/50 hover:shadow-xl hover:shadow-[#25D366]/10 transition-all duration-500 h-full">
+              <div className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-[#FFCC00]/50 hover:shadow-xl hover:shadow-[#FFCC00]/10 transition-all duration-500 h-full">
                 {/* Tag */}
                 <div className="absolute top-4 right-4 z-20">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium text-white ${vehicle.tagColor} shadow-lg`}>
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${vehicle.tagColor} shadow-lg`}>
                     {vehicle.tag}
                   </span>
                 </div>
@@ -81,8 +81,8 @@ export const VehicleTypesSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
 
                   {/* Icon overlay */}
-                  <div className="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                    <vehicle.icon className="w-6 h-6 text-white" />
+                  <div className="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-[#FFCC00] flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                    <vehicle.icon className="w-6 h-6 text-[#141414]" />
                   </div>
                 </div>
 

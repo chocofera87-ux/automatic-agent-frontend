@@ -91,7 +91,7 @@ const SERVICE_INFO = {
     name: 'WhatsApp Business API',
     description: 'Conexão com Meta Cloud API para envio/recebimento de mensagens',
     icon: MessageSquare,
-    color: 'bg-[#25D366]/10 text-[#25D366]',
+    color: 'bg-[#FFCC00]/10 text-[#FFCC00]',
   },
   machine: {
     name: 'Machine Global',

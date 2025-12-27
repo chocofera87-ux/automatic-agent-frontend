@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, MapPin, Mail, MessageCircle } from "lucide-react";
+import { Phone, MapPin, MessageCircle } from "lucide-react";
 
 export const LandingFooter = () => {
   const currentYear = new Date().getFullYear();
@@ -12,13 +12,13 @@ export const LandingFooter = () => {
   };
 
   return (
-    <footer className="bg-foreground text-background relative overflow-hidden">
+    <footer className="bg-[#0a0a0a] text-white relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=1920&q=80"
           alt=""
-          className="w-full h-full object-cover opacity-10"
+          className="w-full h-full object-cover opacity-5"
         />
       </div>
 
@@ -27,12 +27,12 @@ export const LandingFooter = () => {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center">
-                <Phone className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 rounded-xl bg-[#FFCC00] flex items-center justify-center">
+                <Phone className="w-5 h-5 text-[#141414]" />
               </div>
               <span className="text-xl font-bold">Mi Chame</span>
             </div>
-            <p className="text-background/70 text-sm leading-relaxed">
+            <p className="text-gray-400 text-sm leading-relaxed">
               Sistema de táxi via WhatsApp para a região de São Paulo.
               Peça seu táxi de forma rápida, fácil e segura.
             </p>
@@ -40,12 +40,12 @@ export const LandingFooter = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Links Rápidos</h4>
+            <h4 className="font-semibold mb-4 text-white">Links Rápidos</h4>
             <ul className="space-y-3">
               <li>
                 <button
                   onClick={() => scrollToSection("#recursos")}
-                  className="text-background/70 hover:text-[#25D366] transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#FFCC00] transition-colors text-sm"
                 >
                   Recursos
                 </button>
@@ -53,7 +53,7 @@ export const LandingFooter = () => {
               <li>
                 <button
                   onClick={() => scrollToSection("#como-funciona")}
-                  className="text-background/70 hover:text-[#25D366] transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#FFCC00] transition-colors text-sm"
                 >
                   Como Funciona
                 </button>
@@ -61,7 +61,7 @@ export const LandingFooter = () => {
               <li>
                 <button
                   onClick={() => scrollToSection("#cobertura")}
-                  className="text-background/70 hover:text-[#25D366] transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#FFCC00] transition-colors text-sm"
                 >
                   Cobertura
                 </button>
@@ -69,7 +69,7 @@ export const LandingFooter = () => {
               <li>
                 <button
                   onClick={() => scrollToSection("#veiculos")}
-                  className="text-background/70 hover:text-[#25D366] transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#FFCC00] transition-colors text-sm"
                 >
                   Veículos
                 </button>
@@ -79,21 +79,21 @@ export const LandingFooter = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4">Contato</h4>
+            <h4 className="font-semibold mb-4 text-white">Contato</h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href="https://wa.me/5519992753360"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-background/70 hover:text-[#25D366] transition-colors text-sm"
+                  className="flex items-center gap-2 text-gray-400 hover:text-[#FFCC00] transition-colors text-sm"
                 >
                   <MessageCircle className="w-4 h-4" />
                   (19) 99275-3360
                 </a>
               </li>
               <li>
-                <div className="flex items-center gap-2 text-background/70 text-sm">
+                <div className="flex items-center gap-2 text-gray-400 text-sm">
                   <MapPin className="w-4 h-4" />
                   São Paulo, Brasil
                 </div>
@@ -103,12 +103,12 @@ export const LandingFooter = () => {
 
           {/* Access */}
           <div>
-            <h4 className="font-semibold mb-4">Acesso</h4>
+            <h4 className="font-semibold mb-4 text-white">Acesso</h4>
             <ul className="space-y-3">
               <li>
                 <Link
                   to="/login"
-                  className="text-background/70 hover:text-[#25D366] transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#FFCC00] transition-colors text-sm"
                 >
                   Área do Operador
                 </Link>
@@ -118,7 +118,7 @@ export const LandingFooter = () => {
                   href="https://wa.me/5519992753360"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-background/70 hover:text-[#25D366] transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#FFCC00] transition-colors text-sm"
                 >
                   Chamar Táxi
                 </a>
@@ -128,14 +128,14 @@ export const LandingFooter = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-background/10">
+        <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/50 text-sm">
+            <p className="text-gray-500 text-sm">
               &copy; {currentYear} Mi Chame. Todos os direitos reservados.
             </p>
-            <div className="flex items-center gap-2 text-background/50 text-sm">
+            <div className="flex items-center gap-2 text-gray-500 text-sm">
               <span>Feito com</span>
-              <span className="text-[#25D366]">♥</span>
+              <span className="text-[#FFCC00]">♥</span>
               <span>em São Paulo</span>
             </div>
           </div>

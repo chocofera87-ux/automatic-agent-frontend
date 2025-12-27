@@ -13,19 +13,19 @@ export const CTASection = () => {
         />
       </div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#25D366]/95 to-[#128C7E]/95 z-[1]" />
+      {/* Dark Gradient Overlay with Yellow accent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#141414]/95 via-[#141414]/90 to-[#141414]/95 z-[1]" />
 
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 z-[2]" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 z-[2]" />
+      {/* Decorative Elements - Yellow glow */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-[#FFCC00]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 z-[2]" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FFCC00]/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 z-[2]" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
           {/* Icon */}
-          <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center animate-float">
-            <Phone className="w-10 h-10 text-white" />
+          <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-[#FFCC00] flex items-center justify-center animate-float shadow-lg shadow-[#FFCC00]/30">
+            <Phone className="w-10 h-10 text-[#141414]" />
           </div>
 
           {/* Headline */}
@@ -34,7 +34,7 @@ export const CTASection = () => {
           </h2>
 
           {/* Subheadline */}
-          <p className="text-lg sm:text-xl text-white/80 mb-10 max-w-xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-xl mx-auto">
             Chame seu táxi agora mesmo pelo WhatsApp.
             É rápido, fácil e sem complicação.
           </p>
@@ -48,7 +48,7 @@ export const CTASection = () => {
           >
             <Button
               size="lg"
-              className="bg-white text-[#25D366] hover:bg-white/90 text-lg px-10 py-7 rounded-xl shadow-xl shadow-black/10 hover:shadow-2xl hover:scale-105 transition-all duration-300 font-semibold"
+              className="bg-[#FFCC00] text-[#141414] hover:bg-[#E6B800] text-lg px-10 py-7 rounded-xl shadow-xl shadow-[#FFCC00]/20 hover:shadow-2xl hover:shadow-[#FFCC00]/30 hover:scale-105 transition-all duration-300 font-semibold"
             >
               <MessageCircle className="w-6 h-6 mr-3" />
               Chamar Táxi Agora
@@ -56,7 +56,7 @@ export const CTASection = () => {
           </a>
 
           {/* Phone Number */}
-          <div className="mt-8 flex items-center justify-center gap-2 text-white/70">
+          <div className="mt-8 flex items-center justify-center gap-2 text-gray-400">
             <Phone className="w-4 h-4" />
             <span className="font-mono text-lg">(19) 99275-3360</span>
           </div>

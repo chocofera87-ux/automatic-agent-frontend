@@ -1,4 +1,4 @@
-import { MessageSquare, Activity, RefreshCw, Car, BarChart3, Settings, Menu, Phone, Users, LogOut, User } from 'lucide-react';
+import { MessageSquare, Activity, RefreshCw, Car, BarChart3, Settings, Menu, Phone, Users, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { NavLink } from '@/components/NavLink';
 import { cn } from '@/lib/utils';
@@ -57,8 +57,8 @@ export function Navbar({ onRefresh, isLoading }: NavbarProps) {
       <div className="flex items-center justify-between">
         {/* Mi Chame Logo */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] shadow-lg">
-            <Phone className="w-5 h-5 text-white" />
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#FFCC00] shadow-lg">
+            <Phone className="w-5 h-5 text-[#141414]" />
           </div>
           <div className="hidden sm:block">
             <h1 className="text-lg font-bold text-foreground leading-tight tracking-tight">

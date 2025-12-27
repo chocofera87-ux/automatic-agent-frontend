@@ -50,7 +50,7 @@ export const HowItWorksSection = () => {
 
         <div className="relative">
           {/* Connection Line - Desktop */}
-          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#25D366]/30 to-transparent" />
+          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#FFCC00]/30 to-transparent" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {steps.map((step, index) => (
@@ -63,8 +63,8 @@ export const HowItWorksSection = () => {
                 <div className="text-center group">
                   {/* Icon Container */}
                   <div className="relative inline-flex mb-6">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-lg shadow-[#25D366]/20 group-hover:scale-110 transition-transform duration-300">
-                      <step.icon className="w-9 h-9 text-white" />
+                    <div className="w-20 h-20 rounded-2xl bg-[#FFCC00] flex items-center justify-center shadow-lg shadow-[#FFCC00]/20 group-hover:scale-110 transition-transform duration-300">
+                      <step.icon className="w-9 h-9 text-[#141414]" />
                     </div>
                     {/* Step Number Badge */}
                     <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-foreground text-background text-sm font-bold flex items-center justify-center shadow-md">
@@ -84,7 +84,7 @@ export const HowItWorksSection = () => {
                 {/* Arrow - Mobile/Tablet */}
                 {index < steps.length - 1 && (
                   <div className="lg:hidden flex justify-center my-6">
-                    <div className="w-0.5 h-8 bg-gradient-to-b from-[#25D366]/50 to-transparent" />
+                    <div className="w-0.5 h-8 bg-gradient-to-b from-[#FFCC00]/50 to-transparent" />
                   </div>
                 )}
               </div>

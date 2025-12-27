@@ -52,8 +52,8 @@ const Login = () => {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#25D366] to-[#128C7E] shadow-lg mb-4">
-            <Phone className="w-8 h-8 text-white" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#FFCC00] shadow-lg mb-4">
+            <Phone className="w-8 h-8 text-[#141414]" />
           </div>
           <h1 className="text-2xl font-bold text-foreground">Mi Chame</h1>
           <p className="text-muted-foreground mt-1">WhatsApp Taxi Dispatch</p>
@@ -109,7 +109,7 @@ const Login = () => {
 
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#25D366]"
+              className="w-full bg-[#FFCC00] hover:bg-[#E6B800] text-[#141414] font-semibold"
               disabled={isLoading}
             >
               {isLoading ? (
