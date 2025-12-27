@@ -11,7 +11,7 @@ export const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
+      {/* Video Background - City/taxi driving theme */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -21,14 +21,19 @@ export const HeroSection = () => {
           className="absolute w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
         >
-          {/* Taxi/City driving video */}
+          {/* City driving video - taxi/transport theme */}
           <source
-            src="https://cdn.coverr.co/videos/coverr-driving-through-a-city-at-night-4866/1080p.mp4"
+            src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
+            type="video/mp4"
+          />
+          {/* Fallback video source */}
+          <source
+            src="https://videos.pexels.com/video-files/1721294/1721294-hd_1920_1080_25fps.mp4"
             type="video/mp4"
           />
         </video>
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/95 via-[#141414]/85 to-[#141414]/95" />
+        {/* Dark overlay for readability - adjusted for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/90 via-[#141414]/80 to-[#141414]/90" />
       </div>
 
       {/* Animated Gradient Overlay - Yellow accent */}

@@ -4,13 +4,22 @@ import { Button } from "@/components/ui/button";
 export const CTASection = () => {
   return (
     <section className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background Image - Brazilian city street */}
+      {/* Video Background - City street/taxi theme */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&q=80"
-          alt=""
-          className="w-full h-full object-cover"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute w-full h-full object-cover"
+          poster="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&q=80"
+        >
+          {/* City street video */}
+          <source
+            src="https://videos.pexels.com/video-files/2053100/2053100-uhd_2560_1440_30fps.mp4"
+            type="video/mp4"
+          />
+        </video>
       </div>
 
       {/* Dark Gradient Overlay with Yellow accent */}
