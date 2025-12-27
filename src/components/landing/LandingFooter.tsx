@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, MapPin, MessageCircle } from "lucide-react";
+import { MapPin, MessageCircle } from "lucide-react";
 
 export const LandingFooter = () => {
   const currentYear = new Date().getFullYear();
@@ -26,12 +26,13 @@ export const LandingFooter = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-[#FFCC00] flex items-center justify-center">
-                <Phone className="w-5 h-5 text-[#141414]" />
-              </div>
-              <span className="text-xl font-bold">Mi Chame</span>
-            </div>
+            <Link to="/" className="inline-block mb-4">
+              <img
+                src="/logo.pdf"
+                alt="Mi Chame"
+                className="h-10 w-auto hover:scale-105 transition-transform duration-300"
+              />
+            </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Sistema de táxi via WhatsApp para a região de São Paulo.
               Peça seu táxi de forma rápida, fácil e segura.

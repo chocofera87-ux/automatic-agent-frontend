@@ -21,9 +21,9 @@ export const HeroSection = () => {
           className="absolute w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
         >
-          {/* Local video - taxi/transport theme */}
+          {/* Client hero video */}
           <source
-            src="/215500_medium.mp4"
+            src="/hero.mp4"
             type="video/mp4"
           />
         </video>
