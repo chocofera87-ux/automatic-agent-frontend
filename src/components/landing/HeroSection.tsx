@@ -1,4 +1,4 @@
-import { MessageCircle, ArrowDown, Users, MapPin } from "lucide-react";
+import { MessageCircle, ArrowDown, MapPin, Car, Clock, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
@@ -21,151 +21,159 @@ export const HeroSection = () => {
           className="absolute w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
         >
-          {/* City driving video - taxi/transport theme from Pixabay (reliable CDN) */}
+          {/* Local video - taxi/transport theme */}
           <source
-            src="https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4"
-            type="video/mp4"
-          />
-          {/* Fallback: City traffic video */}
-          <source
-            src="https://cdn.pixabay.com/video/2019/06/07/24222-341708498_large.mp4"
+            src="/215500_medium.mp4"
             type="video/mp4"
           />
         </video>
-        {/* Dark overlay for readability - adjusted for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/90 via-[#141414]/80 to-[#141414]/90" />
+        {/* Enhanced dark overlay with gradient for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/95 via-[#141414]/85 to-[#141414]/95" />
+        {/* Vignette effect for cinematic look */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(20,20,20,0.4)_100%)]" />
       </div>
 
-      {/* Animated Gradient Overlay - Yellow accent */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FFCC00]/5 via-transparent to-[#FFCC00]/5 z-[1]" />
+      {/* Animated Gradient Overlay - Subtle yellow glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FFCC00]/10 via-transparent to-[#FFCC00]/5 z-[1] animate-pulse-slow" />
 
-      {/* Animated Circles - Yellow theme */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-[#FFCC00]/15 rounded-full blur-3xl animate-pulse-subtle z-[1]" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#FFCC00]/10 rounded-full blur-3xl animate-pulse-subtle z-[1]" style={{ animationDelay: "1s" }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#FFCC00]/5 to-[#FFCC00]/10 rounded-full blur-3xl z-[1]" />
+      {/* Animated Light Effects - Yellow theme */}
+      <div className="absolute top-20 left-10 w-96 h-96 bg-[#FFCC00]/20 rounded-full blur-[100px] animate-pulse-subtle z-[1]" />
+      <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#FFCC00]/15 rounded-full blur-[120px] animate-pulse-subtle z-[1]" style={{ animationDelay: "1.5s" }} />
+      <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-[#FFCC00]/10 rounded-full blur-[80px] animate-float z-[1]" style={{ animationDelay: "0.5s" }} />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-24 pb-12">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge - Local trust focus */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFCC00]/10 border border-[#FFCC00]/30 mb-8 animate-fade-in">
-            <MapPin className="w-4 h-4 text-[#FFCC00]" />
-            <span className="text-sm font-medium text-[#FFCC00]">
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Badge - Local trust focus with enhanced styling */}
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FFCC00]/15 border-2 border-[#FFCC00]/40 backdrop-blur-sm mb-8 animate-fade-in shadow-lg shadow-[#FFCC00]/10">
+            <MapPin className="w-5 h-5 text-[#FFCC00]" />
+            <span className="text-sm font-semibold text-[#FFCC00] tracking-wide">
               Motoristas locais da sua cidade
             </span>
           </div>
 
-          {/* Main Headline - Human/local focus */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          {/* Main Headline - Enhanced typography */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 animate-fade-in leading-tight tracking-tight" style={{ animationDelay: "0.1s" }}>
             Seu táxi de confiança,{" "}
-            <span className="text-[#FFCC00]">
+            <span className="text-[#FFCC00] drop-shadow-[0_0_30px_rgba(255,204,0,0.5)]">
               sem baixar app
             </span>
           </h1>
 
-          {/* Subheadline - Simple, human, local */}
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          {/* Subheadline - Enhanced readability */}
+          <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto mb-8 animate-fade-in leading-relaxed font-light" style={{ animationDelay: "0.2s" }}>
             Chame um táxi pelo WhatsApp em segundos. Motoristas conhecidos da região,
             atendimento rápido e sem complicação. É só mandar uma mensagem!
           </p>
 
-          {/* Trust indicators */}
-          <div className="flex flex-wrap items-center justify-center gap-6 mb-10 animate-fade-in" style={{ animationDelay: "0.25s" }}>
-            <div className="flex items-center gap-2 text-gray-400">
-              <Users className="w-4 h-4 text-[#FFCC00]" />
-              <span className="text-sm">Usado diariamente em Capivari</span>
+          {/* Trust indicators with icons */}
+          <div className="flex flex-wrap items-center justify-center gap-8 mb-12 animate-fade-in" style={{ animationDelay: "0.25s" }}>
+            <div className="flex items-center gap-2.5 px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+              <Car className="w-5 h-5 text-[#FFCC00]" />
+              <span className="text-sm font-medium text-gray-200">Frota local</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-400">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              <span className="text-sm">Atendimento humano quando precisar</span>
+            <div className="flex items-center gap-2.5 px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+              <Clock className="w-5 h-5 text-[#FFCC00]" />
+              <span className="text-sm font-medium text-gray-200">Resposta rápida</span>
+            </div>
+            <div className="flex items-center gap-2.5 px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+              <Shield className="w-5 h-5 text-[#FFCC00]" />
+              <span className="text-sm font-medium text-gray-200">Confiável e seguro</span>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          {/* CTA Buttons - Enhanced design */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-20 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <a
               href="https://wa.me/5519992753360"
               target="_blank"
               rel="noopener noreferrer"
+              className="w-full sm:w-auto"
             >
               <Button
                 size="lg"
-                className="bg-[#FFCC00] hover:bg-[#E6B800] text-[#141414] text-lg px-8 py-6 rounded-xl shadow-lg shadow-[#FFCC00]/25 hover:shadow-xl hover:shadow-[#FFCC00]/40 transition-all duration-300 hover:scale-105 font-semibold"
+                className="w-full sm:w-auto bg-[#FFCC00] hover:bg-[#E6B800] text-[#141414] text-lg px-10 py-7 rounded-2xl shadow-2xl shadow-[#FFCC00]/30 hover:shadow-[#FFCC00]/50 transition-all duration-300 hover:scale-105 font-bold tracking-wide border-2 border-[#FFCC00]/50 hover:border-[#FFCC00]"
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
+                <MessageCircle className="w-6 h-6 mr-3" />
                 Pedir um táxi agora
               </Button>
             </a>
             <Button
               size="lg"
               onClick={scrollToFeatures}
-              className="bg-white hover:bg-gray-100 text-[#141414] text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-semibold"
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white text-lg px-10 py-7 rounded-2xl shadow-xl border-2 border-white/30 hover:border-white/50 transition-all duration-300 hover:scale-105 font-semibold"
             >
               Como funciona
+              <ArrowDown className="w-5 h-5 ml-2" />
             </Button>
           </div>
 
-          {/* Phone Mockup */}
-          <div className="relative max-w-xs mx-auto animate-float">
-            <div className="relative bg-[#141414] rounded-[3rem] p-3 shadow-2xl border border-[#FFCC00]/20">
+          {/* Phone Mockup - Enhanced premium design */}
+          <div className="relative max-w-sm mx-auto animate-float">
+            <div className="relative bg-gradient-to-br from-[#141414] to-[#1a1a1a] rounded-[3.5rem] p-4 shadow-2xl border-2 border-[#FFCC00]/30">
               {/* Phone Frame */}
-              <div className="bg-white rounded-[2.5rem] overflow-hidden">
+              <div className="bg-white rounded-[3rem] overflow-hidden shadow-inner">
                 {/* Status Bar - Mi Chame Yellow/Black brand */}
-                <div className="bg-[#141414] px-6 py-4 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#FFCC00] flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-[#141414]" />
+                <div className="bg-gradient-to-r from-[#141414] to-[#1f1f1f] px-6 py-5 flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FFCC00] to-[#E6B800] flex items-center justify-center shadow-lg shadow-[#FFCC00]/50">
+                    <MessageCircle className="w-6 h-6 text-[#141414]" />
                   </div>
                   <div>
-                    <p className="text-[#FFCC00] font-semibold text-sm">Mi Chame</p>
-                    <p className="text-gray-400 text-xs">online</p>
+                    <p className="text-[#FFCC00] font-bold text-base">Mi Chame</p>
+                    <p className="text-gray-400 text-xs flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      online
+                    </p>
                   </div>
                 </div>
 
                 {/* Chat Content */}
-                <div className="bg-gray-100 p-4 space-y-3 min-h-[280px]">
+                <div className="bg-gradient-to-b from-gray-50 to-gray-100 p-5 space-y-4 min-h-[300px]">
                   {/* Bot Message */}
-                  <div className="flex justify-start">
-                    <div className="bg-white rounded-lg rounded-tl-none px-3 py-2 max-w-[85%] shadow-sm border border-gray-200">
-                      <p className="text-sm text-gray-800">
+                  <div className="flex justify-start animate-fade-in">
+                    <div className="bg-white rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] shadow-md border border-gray-200">
+                      <p className="text-sm text-gray-800 leading-relaxed">
                         Olá! Bem-vindo ao Mi Chame. Para onde você quer ir hoje?
                       </p>
-                      <p className="text-[10px] text-gray-500 text-right mt-1">10:30</p>
+                      <p className="text-[10px] text-gray-400 text-right mt-1.5">10:30</p>
                     </div>
                   </div>
 
                   {/* User Message */}
-                  <div className="flex justify-end">
-                    <div className="bg-[#FFCC00] rounded-lg rounded-tr-none px-3 py-2 max-w-[85%] shadow-sm">
-                      <p className="text-sm text-[#141414]">
+                  <div className="flex justify-end animate-fade-in" style={{ animationDelay: "0.1s" }}>
+                    <div className="bg-gradient-to-br from-[#FFCC00] to-[#E6B800] rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%] shadow-md">
+                      <p className="text-sm text-[#141414] font-medium leading-relaxed">
                         Quero ir do Centro para o Shopping
                       </p>
-                      <p className="text-[10px] text-[#141414]/60 text-right mt-1">10:31</p>
+                      <p className="text-[10px] text-[#141414]/60 text-right mt-1.5">10:31</p>
                     </div>
                   </div>
 
                   {/* Bot Response */}
-                  <div className="flex justify-start">
-                    <div className="bg-white rounded-lg rounded-tl-none px-3 py-2 max-w-[85%] shadow-sm border border-gray-200">
-                      <p className="text-sm text-gray-800">
-                        Perfeito! O valor estimado é <strong className="text-[#141414]">R$ 25,00</strong>. Confirma a corrida?
+                  <div className="flex justify-start animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                    <div className="bg-white rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] shadow-md border border-gray-200">
+                      <p className="text-sm text-gray-800 leading-relaxed">
+                        Perfeito! O valor estimado é <strong className="text-[#FFCC00]">R$ 25,00</strong>. Confirma a corrida?
                       </p>
-                      <p className="text-[10px] text-gray-500 text-right mt-1">10:31</p>
+                      <p className="text-[10px] text-gray-400 text-right mt-1.5">10:31</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Glow Effect - Yellow */}
-            <div className="absolute -inset-4 bg-[#FFCC00]/15 rounded-[4rem] blur-2xl -z-10" />
+            {/* Enhanced Glow Effect - Yellow with multiple layers */}
+            <div className="absolute -inset-6 bg-[#FFCC00]/20 rounded-[5rem] blur-3xl -z-10 animate-pulse-slow" />
+            <div className="absolute -inset-8 bg-[#FFCC00]/10 rounded-[6rem] blur-[100px] -z-10" />
           </div>
 
-          {/* Scroll Indicator */}
+          {/* Scroll Indicator - Enhanced */}
           <button
             onClick={scrollToFeatures}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-400 hover:text-[#FFCC00] transition-colors animate-bounce z-10"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-300 hover:text-[#FFCC00] transition-all duration-300 animate-bounce z-10 p-2 rounded-full hover:bg-[#FFCC00]/10"
+            aria-label="Scroll to features"
           >
-            <ArrowDown className="w-6 h-6" />
+            <ArrowDown className="w-7 h-7" />
           </button>
         </div>
       </div>
