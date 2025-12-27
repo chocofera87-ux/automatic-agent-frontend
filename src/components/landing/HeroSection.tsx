@@ -80,10 +80,9 @@ export const HeroSection = () => {
               </Button>
             </a>
             <Button
-              variant="outline"
               size="lg"
               onClick={scrollToFeatures}
-              className="text-lg px-8 py-6 rounded-xl border-2 border-white/30 text-white hover:bg-white/10 hover:border-[#FFCC00]/50"
+              className="bg-white hover:bg-gray-100 text-[#141414] text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-semibold"
             >
               Saber Mais
             </Button>
