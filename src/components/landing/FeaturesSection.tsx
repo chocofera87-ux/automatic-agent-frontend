@@ -1,6 +1,6 @@
 import {
   MessageSquare,
-  Sparkles,
+  Users,
   DollarSign,
   Shield,
   MapPin,
@@ -12,49 +12,49 @@ import { FeatureCard } from "./FeatureCard";
 const features = [
   {
     icon: MessageSquare,
-    title: "Pelo WhatsApp",
+    title: "Sem baixar aplicativo",
     description:
-      "Peça seu táxi diretamente pelo WhatsApp, sem instalar nenhum app adicional. Simples assim.",
+      "Peça seu táxi direto pelo WhatsApp que você já usa. Nada de instalar app novo ou criar conta.",
   },
   {
-    icon: Sparkles,
-    title: "IA que Entende Você",
+    icon: Users,
+    title: "Motoristas da região",
     description:
-      "Nossa inteligência artificial entende mensagens de texto e áudio em português natural.",
+      "Nossos motoristas são conhecidos aqui da cidade. Gente de confiança que você pode encontrar na rua.",
   },
   {
     icon: DollarSign,
-    title: "Preço na Hora",
+    title: "Preço combinado antes",
     description:
-      "Saiba o valor da corrida antes de confirmar. Transparência total, sem surpresas no final.",
+      "Você sabe o valor antes de confirmar. Sem surpresas, sem taxas escondidas. Preço justo e transparente.",
   },
   {
     icon: Shield,
-    title: "Segurança Garantida",
+    title: "Atendimento humano",
     description:
-      "Motoristas experientes e verificados da nossa frota local. Sua segurança é prioridade.",
+      "Precisou de ajuda? Tem sempre alguém disponível pra te atender. Nada de robô te enrolando.",
   },
   {
     icon: MapPin,
-    title: "Cobertura Ampla",
+    title: "Conhecemos a região",
     description:
-      "Atendemos Capivari, Rafard, Santa Bárbara d'Oeste, Americana, Nova Odessa e região.",
+      "Capivari, Rafard, Santa Bárbara, Americana... Nossos motoristas conhecem cada rua e atalho.",
   },
   {
     icon: CreditCard,
-    title: "Pague Como Quiser",
+    title: "Pague do seu jeito",
     description:
-      "Dinheiro, débito, crédito, Pix ou PicPay. Você escolhe a forma de pagamento.",
+      "Dinheiro, cartão, Pix ou PicPay. Você escolhe como quer pagar, sem complicação.",
   },
 ];
 
 export const FeaturesSection = () => {
   return (
     <section id="recursos" className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - People using phones */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1557404763-69708cd8b9ce?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1920&q=80"
           alt=""
           className="w-full h-full object-cover opacity-5"
         />
@@ -63,9 +63,9 @@ export const FeaturesSection = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <SectionHeader
-          badge="Recursos"
-          title="Por que escolher o Mi Chame?"
-          subtitle="Combinamos tecnologia moderna com o serviço de táxi tradicional que você confia."
+          badge="Vantagens"
+          title="Por que as pessoas escolhem o Mi Chame?"
+          subtitle="Serviço local de confiança, do jeito que você gosta. Simples, rápido e sem complicação."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">

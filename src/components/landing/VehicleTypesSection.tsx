@@ -5,34 +5,34 @@ const vehicleTypes = [
   {
     icon: Car,
     name: "Carro",
-    description: "Veículo padrão para até 4 passageiros",
+    description: "Veículo padrão para até 4 passageiros. Confortável e seguro.",
     tag: "Mais popular",
     tagColor: "bg-[#FFCC00] text-[#141414]",
-    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&q=80",
+    image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?w=400&q=80",
   },
   {
     icon: Bike,
     name: "Moto",
-    description: "Ideal para 1 pessoa com pressa",
+    description: "Ideal pra 1 pessoa com pressa. Chega rapidinho!",
     tag: "Mais rápido",
     tagColor: "bg-blue-500 text-white",
-    image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&q=80",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
   },
   {
     icon: Crown,
     name: "Premium",
-    description: "Veículo executivo com mais conforto",
+    description: "Veículo executivo com ar e mais espaço. Viaje com conforto.",
     tag: "Mais conforto",
     tagColor: "bg-amber-500 text-[#141414]",
-    image: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=400&q=80",
+    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400&q=80",
   },
   {
     icon: Briefcase,
     name: "Corporativo",
-    description: "Para empresas com faturamento mensal",
+    description: "Pra empresas que precisam de corridas frequentes. Faturamento mensal.",
     tag: "Para empresas",
     tagColor: "bg-purple-500 text-white",
-    image: "https://images.unsplash.com/photo-1511527844068-006b95d162c2?w=400&q=80",
+    image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&q=80",
   },
 ];
 
@@ -51,9 +51,9 @@ export const VehicleTypesSection = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <SectionHeader
-          badge="Frota"
-          title="Escolha seu veículo"
-          subtitle="Temos a opção perfeita para cada situação."
+          badge="Nossa Frota"
+          title="Escolha o veículo que preferir"
+          subtitle="Temos opções pra todo tipo de corrida. Você escolhe o que melhor te atende."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">

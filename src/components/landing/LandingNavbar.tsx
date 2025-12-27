@@ -17,10 +17,10 @@ export const LandingNavbar = () => {
   }, []);
 
   const navLinks = [
-    { href: "#recursos", label: "Recursos" },
+    { href: "#recursos", label: "Vantagens" },
     { href: "#como-funciona", label: "Como Funciona" },
+    { href: "#depoimentos", label: "Depoimentos" },
     { href: "#cobertura", label: "Cobertura" },
-    { href: "#veiculos", label: "Veículos" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -79,7 +79,7 @@ export const LandingNavbar = () => {
               rel="noopener noreferrer"
             >
               <Button className="bg-[#FFCC00] hover:bg-[#E6B800] text-[#141414] shadow-lg font-semibold">
-                Chamar Táxi
+                Pedir Táxi
               </Button>
             </a>
           </div>
@@ -125,7 +125,7 @@ export const LandingNavbar = () => {
                   rel="noopener noreferrer"
                 >
                   <Button className="w-full bg-[#FFCC00] hover:bg-[#E6B800] text-[#141414] font-semibold">
-                    Chamar Táxi
+                    Pedir Táxi
                   </Button>
                 </a>
               </div>

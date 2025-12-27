@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 export const CTASection = () => {
   return (
     <section className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - Brazilian city street */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&q=80"
           alt=""
           className="w-full h-full object-cover"
         />
@@ -30,13 +30,13 @@ export const CTASection = () => {
 
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-            Pronto para experimentar?
+            Precisa de um táxi agora?
           </h2>
 
           {/* Subheadline */}
           <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-xl mx-auto">
-            Chame seu táxi agora mesmo pelo WhatsApp.
-            É rápido, fácil e sem complicação.
+            É só mandar uma mensagem no WhatsApp.
+            Nossos motoristas estão prontos pra te atender!
           </p>
 
           {/* CTA Button */}
@@ -51,7 +51,7 @@ export const CTASection = () => {
               className="bg-[#FFCC00] text-[#141414] hover:bg-[#E6B800] text-lg px-10 py-7 rounded-xl shadow-xl shadow-[#FFCC00]/20 hover:shadow-2xl hover:shadow-[#FFCC00]/30 hover:scale-105 transition-all duration-300 font-semibold"
             >
               <MessageCircle className="w-6 h-6 mr-3" />
-              Chamar Táxi Agora
+              Pedir um táxi agora
             </Button>
           </a>
 
@@ -60,6 +60,11 @@ export const CTASection = () => {
             <Phone className="w-4 h-4" />
             <span className="font-mono text-lg">(19) 99275-3360</span>
           </div>
+
+          {/* Trust message */}
+          <p className="mt-4 text-sm text-gray-500">
+            Atendemos Capivari, Rafard, Santa Bárbara e região
+          </p>
         </div>
       </div>
     </section>

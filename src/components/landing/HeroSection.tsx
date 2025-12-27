@@ -1,4 +1,4 @@
-import { MessageCircle, ArrowDown, Sparkles } from "lucide-react";
+import { MessageCircle, ArrowDown, Users, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
@@ -42,27 +42,39 @@ export const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-24 pb-12">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
+          {/* Badge - Local trust focus */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFCC00]/10 border border-[#FFCC00]/30 mb-8 animate-fade-in">
-            <Sparkles className="w-4 h-4 text-[#FFCC00]" />
+            <MapPin className="w-4 h-4 text-[#FFCC00]" />
             <span className="text-sm font-medium text-[#FFCC00]">
-              Tecnologia + Tradição
+              Motoristas locais da sua cidade
             </span>
           </div>
 
-          {/* Main Headline */}
+          {/* Main Headline - Human/local focus */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Peça seu táxi pelo{" "}
+            Seu táxi de confiança,{" "}
             <span className="text-[#FFCC00]">
-              WhatsApp
+              sem baixar app
             </span>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            O Mi Chame é o sistema mais fácil de chamar táxi na região de São Paulo.
-            Basta enviar uma mensagem e nossa IA cuida do resto.
+          {/* Subheadline - Simple, human, local */}
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            Chame um táxi pelo WhatsApp em segundos. Motoristas conhecidos da região,
+            atendimento rápido e sem complicação. É só mandar uma mensagem!
           </p>
+
+          {/* Trust indicators */}
+          <div className="flex flex-wrap items-center justify-center gap-6 mb-10 animate-fade-in" style={{ animationDelay: "0.25s" }}>
+            <div className="flex items-center gap-2 text-gray-400">
+              <Users className="w-4 h-4 text-[#FFCC00]" />
+              <span className="text-sm">Usado diariamente em Capivari</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-400">
+              <span className="w-2 h-2 rounded-full bg-green-500" />
+              <span className="text-sm">Atendimento humano quando precisar</span>
+            </div>
+          </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in" style={{ animationDelay: "0.3s" }}>
@@ -76,7 +88,7 @@ export const HeroSection = () => {
                 className="bg-[#FFCC00] hover:bg-[#E6B800] text-[#141414] text-lg px-8 py-6 rounded-xl shadow-lg shadow-[#FFCC00]/25 hover:shadow-xl hover:shadow-[#FFCC00]/40 transition-all duration-300 hover:scale-105 font-semibold"
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
-                Chamar pelo WhatsApp
+                Pedir um táxi agora
               </Button>
             </a>
             <Button
@@ -84,7 +96,7 @@ export const HeroSection = () => {
               onClick={scrollToFeatures}
               className="bg-white hover:bg-gray-100 text-[#141414] text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-semibold"
             >
-              Saber Mais
+              Como funciona
             </Button>
           </div>
 

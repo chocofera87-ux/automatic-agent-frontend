@@ -2,6 +2,7 @@ import { LandingNavbar } from "@/components/landing/LandingNavbar";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { HowItWorksSection } from "@/components/landing/HowItWorksSection";
+import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { ServiceAreasSection } from "@/components/landing/ServiceAreasSection";
 import { VehicleTypesSection } from "@/components/landing/VehicleTypesSection";
 import { CTASection } from "@/components/landing/CTASection";
@@ -15,6 +16,7 @@ const Landing = () => {
         <HeroSection />
         <FeaturesSection />
         <HowItWorksSection />
+        <TestimonialsSection />
         <ServiceAreasSection />
         <VehicleTypesSection />
         <CTASection />

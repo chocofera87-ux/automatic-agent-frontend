@@ -5,36 +5,36 @@ const steps = [
   {
     icon: MessageCircle,
     number: "01",
-    title: "Envie uma mensagem",
-    description: "Mande um 'oi' para nosso WhatsApp e comece a conversa",
+    title: "Mande um oi",
+    description: "Abra o WhatsApp e mande uma mensagem pra gente. Pode ser texto ou áudio!",
   },
   {
     icon: MapPin,
     number: "02",
-    title: "Informe os locais",
-    description: "Diga de onde você quer sair e para onde quer ir",
+    title: "Diga pra onde vai",
+    description: "Conte de onde você quer sair e pra onde quer ir. Simples assim.",
   },
   {
     icon: Check,
     number: "03",
-    title: "Confirme o preço",
-    description: "Veja o valor estimado da corrida e confirme o pedido",
+    title: "Veja o preço e confirme",
+    description: "A gente te fala o valor antes. Gostou? É só confirmar a corrida.",
   },
   {
     icon: Car,
     number: "04",
-    title: "Aguarde o motorista",
-    description: "Acompanhe em tempo real a chegada do seu táxi",
+    title: "Seu táxi tá chegando!",
+    description: "Pronto! Um motorista da região já está a caminho pra te buscar.",
   },
 ];
 
 export const HowItWorksSection = () => {
   return (
     <section id="como-funciona" className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - WhatsApp/messaging theme */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1920&q=80"
           alt=""
           className="w-full h-full object-cover opacity-[0.03]"
         />
@@ -44,8 +44,8 @@ export const HowItWorksSection = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <SectionHeader
           badge="Passo a Passo"
-          title="Como funciona?"
-          subtitle="Pedir um táxi nunca foi tão fácil. Veja como é simples."
+          title="É muito fácil de usar"
+          subtitle="Qualquer pessoa consegue. É só mandar uma mensagem, igual você faz com seus amigos."
         />
 
         <div className="relative">
