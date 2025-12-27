@@ -14,9 +14,14 @@ export const CTASection = () => {
           className="absolute w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&q=80"
         >
-          {/* City street video */}
+          {/* City night driving video from Pixabay (reliable CDN) */}
           <source
-            src="https://videos.pexels.com/video-files/2053100/2053100-uhd_2560_1440_30fps.mp4"
+            src="https://cdn.pixabay.com/video/2016/09/21/5373-183629362_large.mp4"
+            type="video/mp4"
+          />
+          {/* Fallback: Urban traffic video */}
+          <source
+            src="https://cdn.pixabay.com/video/2020/07/30/45913-446235982_large.mp4"
             type="video/mp4"
           />
         </video>

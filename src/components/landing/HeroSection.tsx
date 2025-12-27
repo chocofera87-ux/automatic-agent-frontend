@@ -21,14 +21,14 @@ export const HeroSection = () => {
           className="absolute w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
         >
-          {/* City driving video - taxi/transport theme */}
+          {/* City driving video - taxi/transport theme from Pixabay (reliable CDN) */}
           <source
-            src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
+            src="https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4"
             type="video/mp4"
           />
-          {/* Fallback video source */}
+          {/* Fallback: City traffic video */}
           <source
-            src="https://videos.pexels.com/video-files/1721294/1721294-hd_1920_1080_25fps.mp4"
+            src="https://cdn.pixabay.com/video/2019/06/07/24222-341708498_large.mp4"
             type="video/mp4"
           />
         </video>
