@@ -12,39 +12,39 @@ import { FeatureCard } from "./FeatureCard";
 const features = [
   {
     icon: MessageSquare,
-    title: "Sem baixar aplicativo",
+    title: "Só conversa, nada mais",
     description:
-      "Peça seu táxi direto pelo WhatsApp que você já usa. Nada de instalar app novo ou criar conta.",
+      "A IA entende você. Não precisa apertar botões, preencher formulários ou navegar menus. Só fala naturalmente.",
   },
   {
     icon: Users,
-    title: "Motoristas da região",
+    title: "Motoristas locais de confiança",
     description:
-      "Nossos motoristas são conhecidos aqui da cidade. Gente de confiança que você pode encontrar na rua.",
+      "Gente da sua cidade que você conhece. Não é um estranho de outro lugar.",
   },
   {
     icon: DollarSign,
-    title: "Preço combinado antes",
+    title: "Economia de tempo",
     description:
-      "Você sabe o valor antes de confirmar. Sem surpresas, sem taxas escondidas. Preço justo e transparente.",
+      "Não perde tempo com app complicado. A IA faz tudo automaticamente enquanto você cuida da sua vida.",
   },
   {
     icon: Shield,
-    title: "Atendimento humano",
+    title: "Sempre disponível",
     description:
-      "Precisou de ajuda? Tem sempre alguém disponível pra te atender. Nada de robô te enrolando.",
+      "A IA trabalha 24h por dia. Manhã, tarde, noite, madrugada. Sempre pronta pra te atender.",
   },
   {
     icon: MapPin,
-    title: "Conhecemos a região",
+    title: "Conhece sua região",
     description:
-      "Capivari, Rafard, Santa Bárbara, Americana... Nossos motoristas conhecem cada rua e atalho.",
+      "A IA já sabe onde você está. Motoristas conhecem cada rua da cidade.",
   },
   {
     icon: CreditCard,
-    title: "Pague do seu jeito",
+    title: "Sem complicação pra pagar",
     description:
-      "Dinheiro, cartão, Pix ou PicPay. Você escolhe como quer pagar, sem complicação.",
+      "Paga como quiser: dinheiro, cartão, Pix. Do jeito que for mais fácil pra você.",
   },
 ];
 
@@ -63,9 +63,9 @@ export const FeaturesSection = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          badge="Vantagens"
-          title="Por que as pessoas escolhem o Mi Chame?"
-          subtitle="Serviço local de confiança, do jeito que você gosta. Simples, rápido e sem complicação."
+          badge="Por que escolher Mi Chame"
+          title="Automação que economiza seu tempo"
+          subtitle="Enquanto apps complicados fazem você perder tempo, a IA do Mi Chame trabalha pra você."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">

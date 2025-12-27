@@ -46,13 +46,13 @@ export const CTASection = () => {
 
           {/* Headline */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 px-4">
-            Precisa de um táxi agora?
+            Experimente agora. É grátis.
           </h2>
 
           {/* Subheadline */}
           <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-10 max-w-xl mx-auto px-4">
-            É só mandar uma mensagem no WhatsApp.
-            Nossos motoristas estão prontos pra te atender!
+            Fale com a IA e veja como é simples.
+            Sem cadastro, sem complicação.
           </p>
 
           {/* CTA Button */}
@@ -66,7 +66,7 @@ export const CTASection = () => {
               className="w-full sm:w-auto bg-[#FFCC00] text-[#141414] hover:bg-[#E6B800] active:bg-[#D4A800] text-base sm:text-lg px-8 sm:px-10 py-5 sm:py-7 rounded-xl shadow-xl shadow-[#FFCC00]/20 hover:shadow-2xl hover:shadow-[#FFCC00]/30 sm:hover:scale-105 active:scale-95 transition-all duration-300 font-semibold touch-manipulation"
             >
               <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
-              Pedir um táxi agora
+              Experimentar agora
             </Button>
           </a>
 

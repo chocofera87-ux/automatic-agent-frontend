@@ -1,5 +1,7 @@
 import { LandingNavbar } from "@/components/landing/LandingNavbar";
 import { HeroSection } from "@/components/landing/HeroSection";
+import { HowItWorksFlowSection } from "@/components/landing/HowItWorksFlowSection";
+import { DemoSection } from "@/components/landing/DemoSection";
 import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { HowItWorksSection } from "@/components/landing/HowItWorksSection";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
@@ -14,6 +16,8 @@ const Landing = () => {
       <LandingNavbar />
       <main>
         <HeroSection />
+        <HowItWorksFlowSection />
+        <DemoSection />
         <FeaturesSection />
         <HowItWorksSection />
         <TestimonialsSection />

@@ -27,14 +27,14 @@ export const HeroSection = () => {
             type="video/mp4"
           />
         </video>
-        {/* Enhanced dark overlay with gradient for better text readability - Darker on mobile */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/98 via-[#141414]/90 to-[#141414]/98 md:from-[#141414]/95 md:via-[#141414]/85 md:to-[#141414]/95" />
-        {/* Vignette effect for cinematic look */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(20,20,20,0.5)_100%)]" />
+        {/* Light overlay to keep text readable while showing video clearly */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/50 via-[#141414]/30 to-[#141414]/50 md:from-[#141414]/40 md:via-[#141414]/20 md:to-[#141414]/40" />
+        {/* Subtle vignette for depth */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(20,20,20,0.3)_100%)]" />
       </div>
 
       {/* Animated Gradient Overlay - Subtle yellow glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FFCC00]/10 via-transparent to-[#FFCC00]/5 z-[1] animate-pulse-slow" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FFCC00]/5 via-transparent to-[#FFCC00]/5 z-[1] animate-pulse-slow" />
 
       {/* Animated Light Effects - Yellow theme - Hidden on mobile for performance */}
       <div className="hidden md:block absolute top-20 left-10 w-96 h-96 bg-[#FFCC00]/20 rounded-full blur-[100px] animate-pulse-subtle z-[1]" />
@@ -48,22 +48,22 @@ export const HeroSection = () => {
           <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#FFCC00]/15 border-2 border-[#FFCC00]/40 backdrop-blur-sm mb-3 sm:mb-4 animate-fade-in shadow-lg shadow-[#FFCC00]/10">
             <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFCC00]" />
             <span className="text-[10px] sm:text-xs font-semibold text-[#FFCC00] tracking-wide">
-              Motoristas locais da sua cidade
+              IA que conversa e chama o táxi pra você
             </span>
           </div>
 
-          {/* Main Headline - Responsive typography */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-3 sm:mb-4 animate-fade-in leading-tight tracking-tight px-2" style={{ animationDelay: "0.1s" }}>
-            Seu táxi de confiança,{" "}
-            <span className="text-[#FFCC00] drop-shadow-[0_0_20px_rgba(255,204,0,0.4)] sm:drop-shadow-[0_0_30px_rgba(255,204,0,0.5)]">
-              sem baixar app
+          {/* Main Headline - Clearer value proposition */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-3 sm:mb-4 animate-fade-in leading-tight tracking-tight px-2 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]" style={{ animationDelay: "0.1s" }}>
+            Só conversa.{" "}
+            <span className="text-[#FFCC00] drop-shadow-[0_0_20px_rgba(255,204,0,0.6)] sm:drop-shadow-[0_0_30px_rgba(255,204,0,0.7)]">
+              A IA cuida do resto.
             </span>
           </h1>
 
-          {/* Subheadline - Responsive */}
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-xl md:max-w-2xl mx-auto mb-4 sm:mb-6 animate-fade-in leading-relaxed font-light px-4" style={{ animationDelay: "0.2s" }}>
-            Chame um táxi pelo WhatsApp em segundos. Motoristas conhecidos da região,
-            atendimento rápido e sem complicação. É só mandar uma mensagem!
+          {/* Subheadline - More human, focused on benefit */}
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white max-w-xl md:max-w-2xl mx-auto mb-4 sm:mb-6 animate-fade-in leading-relaxed font-light px-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ animationDelay: "0.2s" }}>
+            Um agente de IA que entende o que você fala e automaticamente pede o táxi.
+            Sem app complicado. Só conversa natural.
           </p>
 
           {/* Trust indicators - Mobile optimized */}
@@ -94,14 +94,14 @@ export const HeroSection = () => {
                 className="w-full sm:w-auto bg-[#FFCC00] hover:bg-[#E6B800] active:bg-[#D4A800] text-[#141414] text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 rounded-xl sm:rounded-2xl shadow-2xl shadow-[#FFCC00]/30 hover:shadow-[#FFCC00]/50 transition-all duration-300 sm:hover:scale-105 active:scale-95 font-bold tracking-wide border-2 border-[#FFCC00]/50 hover:border-[#FFCC00] touch-manipulation"
               >
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                Pedir um táxi agora
+                Falar com a IA agora
               </Button>
             </a>
             <Button
               onClick={scrollToFeatures}
               className="w-full sm:w-auto bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-md text-white text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 rounded-xl sm:rounded-2xl shadow-xl border-2 border-white/30 hover:border-white/50 transition-all duration-300 sm:hover:scale-105 active:scale-95 font-semibold touch-manipulation"
             >
-              Como funciona
+              Ver como funciona
               <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
             </Button>
           </div>
