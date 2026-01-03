@@ -24,13 +24,14 @@ export function EventFeed({ events, isLoading }: EventFeedProps) {
   }
 
   return (
-    <div className="bg-card border border-border rounded-lg overflow-hidden">
+    <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-        <CollapsibleTrigger className="w-full px-4 py-3 flex items-center justify-between hover:bg-muted/50 transition-colors">
+        {/* Header with Mi Chame accent */}
+        <CollapsibleTrigger className="w-full px-4 py-3 flex items-center justify-between hover:bg-muted/50 transition-colors bg-gradient-to-r from-[#FFCC00]/10 to-transparent border-b border-border">
           <div className="flex items-center gap-2">
-            <Activity className="w-4 h-4 text-primary" />
-            <span className="font-medium text-sm">System Events</span>
-            <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+            <Activity className="w-5 h-5 text-[#FFCC00]" />
+            <span className="font-semibold text-sm">Eventos do Sistema</span>
+            <span className="px-2 py-0.5 bg-[#FFCC00]/20 text-[#FFCC00] text-xs font-medium rounded-full">
               {events.length}
             </span>
           </div>
@@ -42,11 +43,14 @@ export function EventFeed({ events, isLoading }: EventFeedProps) {
         </CollapsibleTrigger>
 
         <CollapsibleContent>
-          <div className="border-t border-border">
+          <div>
             {events.length === 0 ? (
-              <div className="py-8 text-center">
-                <Zap className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                <p className="text-sm text-muted-foreground">No events yet</p>
+              <div className="py-12 text-center">
+                <div className="w-14 h-14 rounded-2xl bg-[#FFCC00]/10 flex items-center justify-center mx-auto mb-3">
+                  <Zap className="w-7 h-7 text-[#FFCC00]" />
+                </div>
+                <p className="text-sm font-medium text-foreground mb-1">Nenhum evento ainda</p>
+                <p className="text-xs text-muted-foreground">Os eventos aparecerão aqui em tempo real</p>
               </div>
             ) : (
               <div className="divide-y divide-border max-h-[400px] overflow-y-auto">
@@ -132,21 +136,22 @@ function EventItem({ event, style }: EventItemProps) {
 
 function EventFeedSkeleton() {
   return (
-    <div className="bg-card border border-border rounded-lg overflow-hidden">
-      <div className="px-4 py-3 flex items-center gap-2">
-        <Skeleton className="w-4 h-4 rounded" />
-        <Skeleton className="w-24 h-4" />
-        <Skeleton className="w-6 h-5 rounded-full" />
+    <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
+      {/* Header Skeleton */}
+      <div className="px-4 py-3 flex items-center gap-2 bg-gradient-to-r from-[#FFCC00]/10 to-transparent border-b border-border">
+        <Skeleton className="w-5 h-5 rounded" />
+        <Skeleton className="w-32 h-4" />
+        <Skeleton className="w-8 h-5 rounded-full" />
       </div>
-      <div className="border-t border-border divide-y divide-border">
+      <div className="divide-y divide-border">
         {Array.from({ length: 4 }).map((_, i) => (
           <div key={i} className="px-4 py-3">
             <div className="flex items-start gap-3">
-              <Skeleton className="w-12 h-5 rounded" />
+              <Skeleton className="w-14 h-5 rounded-md" />
               <div className="flex-1 space-y-2">
                 <div className="flex justify-between">
-                  <Skeleton className="w-32 h-4" />
-                  <Skeleton className="w-20 h-3" />
+                  <Skeleton className="w-36 h-4" />
+                  <Skeleton className="w-16 h-3" />
                 </div>
                 <Skeleton className="w-full h-4" />
               </div>

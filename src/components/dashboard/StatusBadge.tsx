@@ -6,22 +6,26 @@ interface StatusBadgeProps {
   className?: string;
 }
 
-const statusConfig: Record<RideStatus, { label: string; className: string }> = {
+const statusConfig: Record<RideStatus, { label: string; className: string; dotColor: string }> = {
   requested: {
-    label: 'Requested',
-    className: 'bg-status-requested/10 text-status-requested border-status-requested/20',
+    label: 'Solicitado',
+    className: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
+    dotColor: 'bg-blue-500',
   },
   accepted: {
-    label: 'Accepted',
-    className: 'bg-status-accepted/10 text-status-accepted border-status-accepted/20',
+    label: 'Aceito',
+    className: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20',
+    dotColor: 'bg-green-500',
   },
   'no-driver': {
-    label: 'No Driver',
-    className: 'bg-status-no-driver/10 text-status-no-driver border-status-no-driver/20',
+    label: 'Sem Motorista',
+    className: 'bg-[#FFCC00]/10 text-[#CC9900] dark:text-[#FFCC00] border-[#FFCC00]/20',
+    dotColor: 'bg-[#FFCC00]',
   },
   failed: {
-    label: 'Failed',
-    className: 'bg-status-failed/10 text-status-failed border-status-failed/20',
+    label: 'Falhou',
+    className: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20',
+    dotColor: 'bg-red-500',
   },
 };
 
@@ -31,11 +35,12 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border',
+        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border',
         config.className,
         className
       )}
     >
+      <span className={cn('w-1.5 h-1.5 rounded-full', config.dotColor)} />
       {config.label}
     </span>
   );
@@ -46,18 +51,26 @@ interface EventBadgeProps {
   className?: string;
 }
 
-const eventConfig: Record<EventType, { className: string }> = {
+const eventConfig: Record<EventType, { label: string; className: string; dotColor: string }> = {
   info: {
-    className: 'bg-event-info/10 text-event-info border-event-info/20',
+    label: 'Info',
+    className: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
+    dotColor: 'bg-blue-500',
   },
   success: {
-    className: 'bg-event-success/10 text-event-success border-event-success/20',
+    label: 'Sucesso',
+    className: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20',
+    dotColor: 'bg-green-500',
   },
   warning: {
-    className: 'bg-event-warning/10 text-event-warning border-event-warning/20',
+    label: 'Aviso',
+    className: 'bg-[#FFCC00]/10 text-[#CC9900] dark:text-[#FFCC00] border-[#FFCC00]/20',
+    dotColor: 'bg-[#FFCC00]',
   },
   error: {
-    className: 'bg-event-error/10 text-event-error border-event-error/20',
+    label: 'Erro',
+    className: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20',
+    dotColor: 'bg-red-500',
   },
 };
 
@@ -67,12 +80,13 @@ export function EventBadge({ type, className }: EventBadgeProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border uppercase tracking-wide',
+        'inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium border',
         config.className,
         className
       )}
     >
-      {type}
+      <span className={cn('w-1.5 h-1.5 rounded-full', config.dotColor)} />
+      {config.label}
     </span>
   );
 }

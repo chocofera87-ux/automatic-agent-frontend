@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MessageSquare, Phone, User, Clock, ChevronRight, Loader2 } from 'lucide-react';
+import { MessageSquare, Phone, User, Clock, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -74,25 +74,27 @@ export function ConversationsPanel({ onSelectConversation, className }: Conversa
   };
 
   return (
-    <Card className={cn('flex flex-col', className)}>
-      <CardHeader className="pb-3">
+    <Card className={cn('flex flex-col rounded-xl shadow-sm', className)}>
+      {/* Header with Mi Chame gradient accent */}
+      <CardHeader className="pb-3 bg-gradient-to-r from-[#FFCC00]/10 to-transparent border-b border-border rounded-t-xl">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-base flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-[#FFCC00]/10">
-              <MessageSquare className="w-4 h-4 text-[#FFCC00]" />
-            </div>
+          <CardTitle className="text-sm font-semibold flex items-center gap-2">
+            <MessageSquare className="w-5 h-5 text-[#FFCC00]" />
             Conversas WhatsApp
           </CardTitle>
-          <Badge variant="outline" className="text-xs">
+          <span className="px-2 py-0.5 bg-[#FFCC00]/20 text-[#FFCC00] text-xs font-medium rounded-full">
             {conversations.filter(c => c.isActive).length} ativas
-          </Badge>
+          </span>
         </div>
-        <div className="flex gap-2 mt-2">
+        <div className="flex gap-2 mt-3">
           <Button
             variant={!showAll ? 'default' : 'outline'}
             size="sm"
             onClick={() => setShowAll(false)}
-            className="text-xs h-7"
+            className={cn(
+              "text-xs h-7 transition-colors",
+              !showAll && "bg-[#FFCC00] text-[#141414] hover:bg-[#FFD633]"
+            )}
           >
             Ativas
           </Button>
@@ -100,7 +102,10 @@ export function ConversationsPanel({ onSelectConversation, className }: Conversa
             variant={showAll ? 'default' : 'outline'}
             size="sm"
             onClick={() => setShowAll(true)}
-            className="text-xs h-7"
+            className={cn(
+              "text-xs h-7 transition-colors",
+              showAll && "bg-[#FFCC00] text-[#141414] hover:bg-[#FFD633]"
+            )}
           >
             Todas
           </Button>
@@ -108,13 +113,19 @@ export function ConversationsPanel({ onSelectConversation, className }: Conversa
       </CardHeader>
       <CardContent className="flex-1 p-0">
         {isLoading ? (
-          <div className="flex items-center justify-center py-8">
-            <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+          <div className="flex items-center justify-center py-12">
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-8 h-8 border-2 border-[#FFCC00] border-t-transparent rounded-full animate-spin" />
+              <p className="text-xs text-muted-foreground">Carregando conversas...</p>
+            </div>
           </div>
         ) : conversations.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-8 text-muted-foreground">
-            <MessageSquare className="w-10 h-10 mb-2 opacity-50" />
-            <p className="text-sm">Nenhuma conversa {showAll ? '' : 'ativa'}</p>
+          <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
+            <div className="w-14 h-14 rounded-2xl bg-[#FFCC00]/10 flex items-center justify-center mb-3">
+              <MessageSquare className="w-7 h-7 text-[#FFCC00]" />
+            </div>
+            <p className="text-sm font-medium text-foreground mb-1">Nenhuma conversa {showAll ? '' : 'ativa'}</p>
+            <p className="text-xs text-muted-foreground">As conversas aparecerão aqui</p>
           </div>
         ) : (
           <ScrollArea className="h-[400px]">
