@@ -14,7 +14,9 @@ interface ConversationsPanelProps {
 
 const stateLabels: Record<string, { label: string; color: string }> = {
   GREETING: { label: 'Iniciando', color: 'bg-blue-500' },
+  REQUESTING_LOCATION: { label: 'Localização', color: 'bg-cyan-500' },
   AWAITING_ORIGIN: { label: 'Origem', color: 'bg-yellow-500' },
+  CONFIRMING_ORIGIN: { label: 'Confirmando', color: 'bg-amber-500' },
   AWAITING_DESTINATION: { label: 'Destino', color: 'bg-yellow-500' },
   AWAITING_CATEGORY: { label: 'Categoria', color: 'bg-orange-500' },
   SHOWING_PRICE: { label: 'Preço', color: 'bg-purple-500' },
